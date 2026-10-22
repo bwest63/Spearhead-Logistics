@@ -25,17 +25,37 @@ const TraceSync = (function () {
 
   // Which app data set maps to which table. Units and events share one key.
   const COLLECTIONS = [
-    { table: "units", key: "trace_v18_units_events", field: "units", id: (u) => u.id },
-    { table: "events", key: "trace_v18_units_events", field: "events", id: (e) => e.id },
+    {
+      table: "units",
+      key: "trace_v18_units_events",
+      field: "units",
+      id: (u) => u.id,
+    },
+    {
+      table: "events",
+      key: "trace_v18_units_events",
+      field: "events",
+      id: (e) => e.id,
+    },
     { table: "teos", key: "trace_v23_imported_teos_v1", id: (t) => t.id },
-    { table: "evaluations", key: "trace_bsb_standalone_v1", id: (r) => r.id, owned: true },
+    {
+      table: "evaluations",
+      key: "trace_bsb_standalone_v1",
+      id: (r) => r.id,
+      owned: true,
+    },
     {
       table: "claims",
       key: "trace_observer_assignments_v07",
       id: (a) => [a.unitId, a.exerciseId, a.taskId, a.index].join("|"),
       owned: true,
     },
-    { table: "oct_logs", key: "trace_v32_oct_log", id: (l) => l.id, owned: true },
+    {
+      table: "oct_logs",
+      key: "trace_v32_oct_log",
+      id: (l) => l.id,
+      owned: true,
+    },
   ];
   const ADMIN_TABLES = new Set(["units", "events", "teos"]);
 
@@ -44,6 +64,9 @@ const TraceSync = (function () {
     userId: "",
     displayName: "",
     isAdmin: false,
+    active: true,
+    // The Supabase client, for admin features that talk to the database directly.
+    db: () => client,
     start,
     attach,
     notify,
@@ -84,11 +107,27 @@ const TraceSync = (function () {
       h1 = Math.imul(h1 ^ ch, 2654435761);
       h2 = Math.imul(h2 ^ ch, 1597334677);
     }
-    h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507) ^ Math.imul(h2 ^ (h2 >>> 13), 3266489909);
-    h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507) ^ Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+    h1 =
+      Math.imul(h1 ^ (h1 >>> 16), 2246822507) ^
+      Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+    h2 =
+      Math.imul(h2 ^ (h2 >>> 16), 2246822507) ^
+      Math.imul(h1 ^ (h1 >>> 13), 3266489909);
     return (4294967296 * (2097151 & h2) + (h1 >>> 0)).toString(36);
   }
   const fingerprint = (o) => hash(JSON.stringify(o));
+  const esc = (s) =>
+    String(s ?? "").replace(
+      /[&<>"']/g,
+      (c) =>
+        ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;",
+        })[c],
+    );
   const collection = (table) => COLLECTIONS.find((c) => c.table === table);
   const known = (table) => synced[table] || (synced[table] = {});
 
@@ -100,7 +139,11 @@ const TraceSync = (function () {
   }
   function writeLocal(c, list) {
     if (!c.field) return store(c.key, list);
-    const v = load(c.key, null) || { scope: "all", eventScope: "all", mode: "units" };
+    const v = load(c.key, null) || {
+      scope: "all",
+      eventScope: "all",
+      mode: "units",
+    };
     v[c.field] = list;
     store(c.key, v);
   }
@@ -125,7 +168,8 @@ const TraceSync = (function () {
     } else if (c.table === "teos") {
       const builtIn = tasks.filter((t) => trace23BuiltInIds.has(t.id));
       const imported = list.filter(
-        (t) => t && t.id && Array.isArray(t.steps) && !trace23BuiltInIds.has(t.id),
+        (t) =>
+          t && t.id && Array.isArray(t.steps) && !trace23BuiltInIds.has(t.id),
       );
       imported.forEach(trace23NormalizeEvaluationTask);
       tasks.splice(0, tasks.length, ...builtIn, ...imported);
@@ -154,7 +198,9 @@ const TraceSync = (function () {
       } else delete k[op.id];
     }
     if (c.table === "evaluations")
-      list.sort((a, b) => String(b.savedAt || "").localeCompare(String(a.savedAt || "")));
+      list.sort((a, b) =>
+        String(b.savedAt || "").localeCompare(String(a.savedAt || "")),
+      );
     writeLocal(c, list);
   }
   async function pullAll() {
@@ -213,9 +259,16 @@ const TraceSync = (function () {
         };
         const res =
           op.op === "upsert"
-            ? await client.from(op.table).upsert({ id: op.id, data: toData(op.object) }).select("id")
+            ? await client
+                .from(op.table)
+                .upsert({ id: op.id, data: toData(op.object) })
+                .select("id")
             : await client.from(op.table).delete().eq("id", op.id).select("id");
-        if (res.error && isConnectionError(res.error) && ++op.attempts < MAX_ATTEMPTS) {
+        if (
+          res.error &&
+          isConnectionError(res.error) &&
+          ++op.attempts < MAX_ATTEMPTS
+        ) {
           setOnline(false);
           break;
         }
@@ -226,7 +279,10 @@ const TraceSync = (function () {
         }
         // A refused delete returns no rows; so does deleting a row someone already removed.
         if (op.op === "delete" && !res.data?.length) {
-          const check = await client.from(op.table).select("id").eq("id", op.id);
+          const check = await client
+            .from(op.table)
+            .select("id")
+            .eq("id", op.id);
           if (!check.error && check.data?.length) {
             done();
             await rejected(op, { message: "permission denied" });
@@ -281,15 +337,21 @@ const TraceSync = (function () {
   function subscribe() {
     const channel = client.channel("trace-shared");
     for (const c of COLLECTIONS)
-      channel.on("postgres_changes", { event: "*", schema: "public", table: c.table }, (p) =>
-        onRemoteChange(c, p),
+      channel.on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: c.table },
+        (p) => onRemoteChange(c, p),
       );
     channel.subscribe((status) => {
       if (status === "SUBSCRIBED") {
         live = true;
         if (wasDisconnected) resync();
         wasDisconnected = false;
-      } else if (status === "CHANNEL_ERROR" || status === "TIMED_OUT" || status === "CLOSED") {
+      } else if (
+        status === "CHANNEL_ERROR" ||
+        status === "TIMED_OUT" ||
+        status === "CLOSED"
+      ) {
         live = false;
         wasDisconnected = true;
       }
@@ -329,7 +391,9 @@ const TraceSync = (function () {
       if (!attached) return;
       const busy =
         document.querySelector(".trace18-shade") ||
-        document.activeElement?.closest?.("#content input, #content textarea, #content select") ||
+        document.activeElement?.closest?.(
+          "#content input, #content textarea, #content select",
+        ) ||
         (state.tab === "evaluate" && (state.dirty || state.editingId));
       if (busy) {
         renderPending = true;
@@ -426,13 +490,19 @@ const TraceSync = (function () {
         ...new Map(
           list
             .filter((o) => o && c.id(o) != null)
-            .map((o) => [String(c.id(o)), { id: String(c.id(o)), data: toData(o) }]),
+            .map((o) => [
+              String(c.id(o)),
+              { id: String(c.id(o)), data: toData(o) },
+            ]),
         ).values(),
       ];
       for (let i = 0; i < rows.length; i += UPLOAD_CHUNK) {
         const { data, error } = await client
           .from(c.table)
-          .upsert(rows.slice(i, i + UPLOAD_CHUNK), { onConflict: "id", ignoreDuplicates: true })
+          .upsert(rows.slice(i, i + UPLOAD_CHUNK), {
+            onConflict: "id",
+            ignoreDuplicates: true,
+          })
           .select("id");
         if (error) failures.push(c.table + ": " + error.message);
         else added += data?.length || 0;
@@ -441,7 +511,9 @@ const TraceSync = (function () {
     await resync();
     alert(
       `Upload finished: ${added} new record(s) added to the shared database.` +
-        (failures.length ? `\n\nSome data could not be uploaded:\n${failures.join("\n")}` : ""),
+        (failures.length
+          ? `\n\nSome data could not be uploaded:\n${failures.join("\n")}`
+          : ""),
     );
   }
   function readBackupFile(file) {
@@ -468,83 +540,149 @@ const TraceSync = (function () {
     if (error) throw Error(error.message);
     const entry = data?.[0];
     if (!entry) return null;
-    const dl = await client.storage.from(FILE_BUCKET).download(folder + "/" + entry.name);
+    const dl = await client.storage
+      .from(FILE_BUCKET)
+      .download(folder + "/" + entry.name);
     if (dl.error) throw Error(dl.error.message);
     return { name: entry.name, blob: dl.data };
   }
   async function removeFile(id) {
     const folder = safeName(id);
     const { data } = await client.storage.from(FILE_BUCKET).list(folder);
-    if (data?.length) await client.storage.from(FILE_BUCKET).remove(data.map((f) => folder + "/" + f.name));
+    if (data?.length)
+      await client.storage
+        .from(FILE_BUCKET)
+        .remove(data.map((f) => folder + "/" + f.name));
   }
 
-  // ---------- Sign-in ----------
+  // ---------- Sign-in, password reset, and access checks ----------
+  // Builds the full-screen TRACE card used by the sign-in, new-password, and no-access screens.
+  function authCard(inner) {
+    const shade = document.createElement("div");
+    shade.className = "trace-auth";
+    shade.innerHTML = `<form class="trace-auth-card" novalidate>
+        <img src="img/trace-logo.png" alt="TRACE — Training Readiness Assessment &amp; Coaching Environment">
+        ${inner}
+      </form>`;
+    document.body.appendChild(shade);
+    return shade;
+  }
+  // GoTrue reports a sign-up refused by the invite-only check as a generic database error.
+  function friendlyAuthError(err) {
+    const text = err?.message || "";
+    if (/database error saving new user/i.test(text))
+      return "This email hasn't been invited to TRACE. Ask a TRACE admin to add it on the Accounts page.";
+    if (/invalid login credentials/i.test(text))
+      return "Wrong email or password.";
+    if (/email not confirmed/i.test(text))
+      return "Confirm your email first: open the link sent to your inbox, then sign in.";
+    return text || "Something went wrong. Try again.";
+  }
+  const appAddress = () => location.href.split("#")[0].split("?")[0];
+
   function signInScreen(message) {
     return new Promise((resolve) => {
-      const shade = document.createElement("div");
-      shade.className = "trace-auth";
-      shade.innerHTML = `<form class="trace-auth-card" novalidate>
-        <img src="img/trace-logo.png" alt="TRACE — Training Readiness Assessment &amp; Coaching Environment">
+      const shade = authCard(`
         <h1 data-title>Sign in</h1>
         <p class="trace-auth-sub">Shared OC/T workspace · Fictional demonstration data only</p>
-        <label data-signup hidden>Name or OC/T call sign<input name="name" autocomplete="name" maxlength="80"></label>
+        <label data-only="signup" hidden>Name or OC/T call sign<input name="name" autocomplete="name" maxlength="80"></label>
         <label>Email<input name="email" type="email" autocomplete="username" required></label>
-        <label>Password<input name="password" type="password" autocomplete="current-password" minlength="8" required></label>
+        <label data-only="signin signup">Password<input name="password" type="password" autocomplete="current-password" minlength="8" required></label>
         <p class="trace-auth-msg" role="alert"></p>
         <button class="primary" type="submit" data-submit>Sign in</button>
-        <button class="text-link" type="button" data-toggle>New OC/T? Create an account</button>
-      </form>`;
-      document.body.appendChild(shade);
+        <div class="trace-auth-links">
+          <button class="text-link" type="button" data-go="signup">New OC/T? Create an account</button>
+          <button class="text-link" type="button" data-go="reset">Forgot password?</button>
+          <button class="text-link" type="button" data-go="signin" hidden>Back to sign in</button>
+        </div>`);
       const form = shade.querySelector("form");
       const msg = shade.querySelector(".trace-auth-msg");
-      let signup = false;
-      const setMode = (value) => {
-        signup = value;
-        shade.querySelector("[data-signup]").hidden = !signup;
-        shade.querySelector("[data-title]").textContent = signup ? "Create account" : "Sign in";
-        shade.querySelector("[data-submit]").textContent = signup ? "Create account" : "Sign in";
-        shade.querySelector("[data-toggle]").textContent = signup
-          ? "Already have an account? Sign in"
-          : "New OC/T? Create an account";
-        form.password.autocomplete = signup ? "new-password" : "current-password";
-        msg.textContent = "";
+      const titles = {
+        signin: ["Sign in", "Sign in"],
+        signup: ["Create account", "Create account"],
+        reset: ["Reset password", "Email me a reset link"],
       };
-      msg.textContent = message || "";
-      shade.querySelector("[data-toggle]").onclick = () => setMode(!signup);
+      let mode = "signin";
+      const setMode = (next, note = "") => {
+        mode = next;
+        shade
+          .querySelectorAll("[data-only]")
+          .forEach(
+            (el) => (el.hidden = !el.dataset.only.split(" ").includes(mode)),
+          );
+        shade
+          .querySelectorAll("[data-go]")
+          .forEach(
+            (el) =>
+              (el.hidden =
+                el.dataset.go === mode ||
+                (mode !== "signin" && el.dataset.go !== "signin")),
+          );
+        shade.querySelector("[data-title]").textContent = titles[mode][0];
+        shade.querySelector("[data-submit]").textContent = titles[mode][1];
+        form.password.autocomplete =
+          mode === "signup" ? "new-password" : "current-password";
+        msg.textContent = note;
+      };
+      shade
+        .querySelectorAll("[data-go]")
+        .forEach((el) => (el.onclick = () => setMode(el.dataset.go)));
+      setMode("signin", message || "");
       form.onsubmit = async (e) => {
         e.preventDefault();
         const email = form.email.value.trim();
         const password = form.password.value;
         const name = form.name.value.trim();
-        if (!email || !password) return (msg.textContent = "Enter your email and password.");
-        if (signup && !name) return (msg.textContent = "Enter your name or call sign.");
-        if (signup && password.length < 8)
+        if (!email) return (msg.textContent = "Enter your email.");
+        if (mode !== "reset" && !password)
+          return (msg.textContent = "Enter your password.");
+        if (mode === "signup" && !name)
+          return (msg.textContent = "Enter your name or call sign.");
+        if (mode === "signup" && password.length < 8)
           return (msg.textContent = "Use a password of at least 8 characters.");
         const button = shade.querySelector("[data-submit]");
         button.disabled = true;
-        msg.textContent = signup ? "Creating account…" : "Signing in…";
+        msg.textContent = {
+          signin: "Signing in…",
+          signup: "Creating account…",
+          reset: "Sending…",
+        }[mode];
         try {
-          const { data, error } = signup
-            ? await client.auth.signUp({
-                email,
-                password,
-                options: {
-                  data: { display_name: name },
-                  emailRedirectTo: location.href.split("#")[0],
-                },
-              })
-            : await client.auth.signInWithPassword({ email, password });
+          if (mode === "reset") {
+            const { error } = await client.auth.resetPasswordForEmail(email, {
+              redirectTo: appAddress(),
+            });
+            if (error) throw error;
+            setMode(
+              "signin",
+              "If that email has a TRACE account, a reset link is on its way. Open it on this device to choose a new password.",
+            );
+            return;
+          }
+          const { data, error } =
+            mode === "signup"
+              ? await client.auth.signUp({
+                  email,
+                  password,
+                  options: {
+                    data: { display_name: name },
+                    emailRedirectTo: appAddress(),
+                  },
+                })
+              : await client.auth.signInWithPassword({ email, password });
           if (error) throw error;
           if (!data.session) {
-            setMode(false);
-            msg.textContent = "Account created. Open the confirmation link sent to your email, then sign in here.";
+            setMode(
+              "signin",
+              "Account created. Open the confirmation link sent to your email, then sign in here.",
+            );
             return;
           }
           shade.remove();
           resolve(data.session);
         } catch (err) {
           msg.textContent = navigator.onLine
-            ? err.message || "Sign-in failed."
+            ? friendlyAuthError(err)
             : "No connection. Connect to the internet to sign in.";
         } finally {
           button.disabled = false;
@@ -553,13 +691,55 @@ const TraceSync = (function () {
       form.email.focus();
     });
   }
+  // Shown after opening a password-reset link: the link has signed the person in for this purpose.
+  function newPasswordScreen() {
+    return new Promise((resolve) => {
+      const shade = authCard(`
+        <h1>Choose a new password</h1>
+        <p class="trace-auth-sub">At least 8 characters.</p>
+        <label>New password<input name="password" type="password" autocomplete="new-password" minlength="8" required></label>
+        <label>Repeat new password<input name="confirm" type="password" autocomplete="new-password" minlength="8" required></label>
+        <p class="trace-auth-msg" role="alert"></p>
+        <button class="primary" type="submit">Save password</button>`);
+      const form = shade.querySelector("form");
+      const msg = shade.querySelector(".trace-auth-msg");
+      form.onsubmit = async (e) => {
+        e.preventDefault();
+        if (form.password.value.length < 8)
+          return (msg.textContent = "Use at least 8 characters.");
+        if (form.password.value !== form.confirm.value)
+          return (msg.textContent = "The passwords don't match.");
+        const button = form.querySelector("button");
+        button.disabled = true;
+        msg.textContent = "Saving…";
+        const { error } = await client.auth.updateUser({
+          password: form.password.value,
+        });
+        button.disabled = false;
+        if (error) return (msg.textContent = friendlyAuthError(error));
+        history.replaceState(null, "", appAddress());
+        shade.remove();
+        resolve();
+      };
+      form.password.focus();
+    });
+  }
+  // An admin turned this account's access off; the database already hides all data from it.
+  function noAccessScreen() {
+    const shade = authCard(`
+        <h1>Access turned off</h1>
+        <p class="trace-auth-sub">A TRACE admin has turned off access for ${esc(api.displayName)}. Ask an admin to restore it.</p>
+        <button class="primary" type="button">Sign out</button>`);
+    shade.querySelector("button").onclick = signOut;
+    return new Promise(() => {}); // Start-up stops here.
+  }
   async function loadProfile(user) {
     api.userId = user.id;
     const cached = load(PROFILE_KEY, null);
     let profile = cached?.id === user.id ? cached : null;
     const { data, error } = await client
       .from("profiles")
-      .select("display_name,role")
+      .select("display_name,role,active")
       .eq("id", user.id)
       .maybeSingle();
     if (!error && data) {
@@ -567,20 +747,37 @@ const TraceSync = (function () {
       store(PROFILE_KEY, profile);
     }
     api.displayName =
-      profile?.display_name || user.user_metadata?.display_name || user.email?.split("@")[0] || "OC/T";
-    api.isAdmin = profile?.role === "admin";
+      profile?.display_name ||
+      user.user_metadata?.display_name ||
+      user.email?.split("@")[0] ||
+      "OC/T";
+    api.isAdmin = profile?.role === "admin" && profile?.active !== false;
+    api.active = profile?.active !== false;
   }
 
   // ---------- Start-up (before app scripts) ----------
   async function start(cfg) {
+    // Read before the client starts: it consumes the reset link's token from the address.
+    const resetLink = /type=recovery/.test(location.hash);
+    // A reset link opened in a tab that already shows TRACE only changes the address's #part.
+    window.addEventListener("hashchange", () => {
+      if (/type=recovery/.test(location.hash)) location.reload();
+    });
     client = supabase.createClient(cfg.supabaseUrl, cfg.supabaseAnonKey, {
       auth: { persistSession: true, autoRefreshToken: true },
+    });
+    let resetEvent = false;
+    client.auth.onAuthStateChange((event) => {
+      if (event === "PASSWORD_RECOVERY") resetEvent = true;
     });
     let {
       data: { session },
     } = await client.auth.getSession();
+    await new Promise((r) => setTimeout(r, 0)); // The recovery event is announced on the next tick.
+    if (session && (resetLink || resetEvent)) await newPasswordScreen();
     if (!session) session = await signInScreen();
     await loadProfile(session.user);
+    if (!api.active) await noAccessScreen();
 
     const owner = localStorage.getItem(OWNER_KEY);
     if (owner && owner !== api.userId) clearCache();
@@ -603,14 +800,22 @@ const TraceSync = (function () {
       if (v && v !== "[]") data[key] = v;
     }
     if (Object.keys(data).length && !localStorage.getItem(PRE_SHARED_KEY))
-      store(PRE_SHARED_KEY, { app: "TRACE", version: 42, exported: new Date().toISOString(), data });
+      store(PRE_SHARED_KEY, {
+        app: "TRACE",
+        version: 42,
+        exported: new Date().toISOString(),
+        data,
+      });
   }
 
   // ---------- Attach to the running app (after app scripts) ----------
   function attach() {
     attached = true;
     if (!state.evaluator) state.evaluator = api.displayName;
-    document.body.classList.add("trace-shared", api.isAdmin ? "trace-admin" : "trace-oct");
+    document.body.classList.add(
+      "trace-shared",
+      api.isAdmin ? "trace-admin" : "trace-oct",
+    );
 
     const footer = document.querySelector("main > footer");
     if (footer)
@@ -635,7 +840,9 @@ const TraceSync = (function () {
     account.className = "trace-account";
     account.innerHTML = `<div class="side-note">SIGNED IN</div><div class="trace-account-name"><strong></strong><small></small></div><button type="button" id="traceSignOut">Sign out</button>`;
     account.querySelector("strong").textContent = api.displayName;
-    account.querySelector("small").textContent = api.isAdmin ? "TRACE admin" : "OC/T";
+    account.querySelector("small").textContent = api.isAdmin
+      ? "TRACE admin"
+      : "OC/T";
     account.querySelector("#traceSignOut").onclick = signOut;
     if (backup) backup.parentElement.insertBefore(account, backup);
 
@@ -643,7 +850,8 @@ const TraceSync = (function () {
       const upload = document.createElement("button");
       upload.type = "button";
       upload.textContent = "⇧ Upload backup to shared";
-      upload.title = "Add records from a TRACE backup file that the shared database does not have yet";
+      upload.title =
+        "Add records from a TRACE backup file that the shared database does not have yet";
       const input = document.createElement("input");
       input.type = "file";
       input.accept = ".json,application/json";
@@ -655,7 +863,11 @@ const TraceSync = (function () {
         if (!file) return;
         try {
           const b = await readBackupFile(file);
-          if (confirm("Add this backup's records to the shared database? Records that already exist are not changed."))
+          if (
+            confirm(
+              "Add this backup's records to the shared database? Records that already exist are not changed.",
+            )
+          )
             await uploadBackup(b);
         } catch (e) {
           alert("Backup could not be uploaded: " + e.message);
@@ -667,9 +879,15 @@ const TraceSync = (function () {
         const btn = document.createElement("button");
         btn.type = "button";
         btn.textContent = "⇧ Upload earlier local data";
-        btn.title = "This browser held local-only TRACE data before shared mode. Add it to the shared database.";
+        btn.title =
+          "This browser held local-only TRACE data before shared mode. Add it to the shared database.";
         btn.onclick = async () => {
-          if (!confirm("Add the data this browser held before shared mode to the shared database?")) return;
+          if (
+            !confirm(
+              "Add the data this browser held before shared mode to the shared database?",
+            )
+          )
+            return;
           await uploadBackup(earlier);
           localStorage.removeItem(PRE_SHARED_KEY);
           btn.remove();

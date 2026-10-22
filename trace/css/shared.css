@@ -6,7 +6,8 @@
   display: grid;
   place-items: center;
   padding: 16px;
-  background: radial-gradient(circle at 70% -10%, #1c262b 0%, transparent 50%), #080d11;
+  background:
+    radial-gradient(circle at 70% -10%, #1c262b 0%, transparent 50%), #080d11;
   overflow: auto;
 }
 .trace-auth-card {
@@ -51,8 +52,11 @@
 .trace-auth-card .primary {
   width: 100%;
 }
+.trace-auth-links {
+  display: grid;
+  justify-items: center;
+}
 .trace-auth-card .text-link {
-  justify-self: center;
   padding: 6px;
 }
 
@@ -165,6 +169,128 @@
   border: 1px solid #3b474e;
   border-radius: 4px;
   padding: 7px 10px;
+}
+
+/* Accounts page (admins). */
+.trace-acct-switch {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid #3b474e;
+  border-radius: 8px;
+  background: #151d22;
+  font-weight: 400;
+  margin-bottom: 18px;
+  cursor: pointer;
+}
+.trace-acct-switch input {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  flex: none;
+  accent-color: #c6a252;
+}
+.trace-acct-switch strong {
+  display: block;
+  color: #eef2f4;
+  font-size: 13px;
+}
+.trace-acct-switch small {
+  display: block;
+  margin-top: 4px;
+  color: #a9b6be;
+  font-size: 12px;
+  line-height: 1.4;
+}
+.trace-acct-invite {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 140px auto;
+  gap: 12px;
+  align-items: end;
+}
+.trace-acct-list {
+  display: grid;
+  gap: 8px;
+  margin: 8px 0 12px;
+}
+.trace-acct-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.2fr) auto;
+  gap: 14px;
+  align-items: center;
+  padding: 13px 14px;
+  border: 1px solid #343b43;
+  border-radius: 8px;
+  background: #13191e;
+}
+.trace-acct-row.off {
+  opacity: 0.65;
+}
+.trace-acct-who strong {
+  display: block;
+  color: #eef2f4;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+.trace-acct-who small,
+.trace-acct-meta small {
+  display: block;
+  color: #a9b6be;
+  font-size: 11px;
+  margin-top: 3px;
+  overflow-wrap: anywhere;
+}
+.trace-acct-you {
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: 0.6px;
+  color: #10161a;
+  background: #c6a252;
+  border-radius: 3px;
+  padding: 2px 6px;
+  margin-left: 6px;
+  vertical-align: 2px;
+}
+.trace-acct-badge,
+.trace-acct-status {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  border: 1px solid #66747d;
+  border-radius: 4px;
+  padding: 3px 7px;
+  margin-right: 6px;
+  color: #d8e1e7;
+}
+.trace-acct-badge.admin {
+  border-color: #b78d3f;
+  color: #f5d084;
+}
+.trace-acct-row.off .trace-acct-status {
+  border-color: #b6575b;
+  color: #ffadad;
+}
+.trace-acct-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+.trace-acct-actions button {
+  padding: 8px 11px;
+  font-size: 12px;
+}
+@media (max-width: 850px) {
+  .trace-acct-row,
+  .trace-acct-invite {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .trace-acct-actions {
+    justify-content: flex-start;
+  }
 }
 
 @media (max-width: 850px) {

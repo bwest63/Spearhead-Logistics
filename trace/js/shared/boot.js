@@ -48,7 +48,10 @@
         await TraceSync.start(cfg);
       }
       await loadAll(APP_SCRIPTS);
-      if (shared) TraceSync.attach();
+      if (shared) {
+        await loadScript("js/shared/accounts.js");
+        TraceSync.attach();
+      }
       nav("dashboard");
     } catch (e) {
       console.error(e);
