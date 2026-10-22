@@ -9,6 +9,6 @@
  * security rules decide what each signed-in OC/T may do.
  */
 window.TRACE_CONFIG = {
-  supabaseUrl: "",
-  supabaseAnonKey: "",
+  supabaseUrl: "https://zcwqapdbkyupwwsweija.supabase.co",
+  supabaseAnonKey: "sb_publishable_DAt9jKzztz_WbUpi69-ztg_iGT75ZW9",
 };
