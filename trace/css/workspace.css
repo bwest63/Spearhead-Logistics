@@ -1,0 +1,71 @@
+.ws-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(260px, 1fr);
+  gap: 14px;
+}
+.ws-box {
+  border: 1px solid #37454b;
+  border-radius: 7px;
+  padding: 17px;
+  background: #121b20;
+}
+.ws-box h3 {
+  margin: 0 0 13px;
+  font-size: 14px;
+  color: #e5c27a;
+}
+.ws-box textarea {
+  min-height: 240px;
+  line-height: 1.65;
+}
+.ws-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+.ws-actions button {
+  font-size: 12px;
+}
+.ws-file {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #303c42;
+  align-items: center;
+}
+.ws-file small {
+  display: block;
+  color: #9baeb8;
+  margin-top: 4px;
+}
+.ws-file button {
+  padding: 7px 10px;
+  font-size: 11px;
+}
+.ws-tip {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #afbec6;
+}
+.ws-output {
+  white-space: pre-wrap;
+  min-height: 180px;
+}
+.ws-status {
+  font-size: 12px;
+  color: #e5c27a;
+  margin-top: 10px;
+}
+.ws-file input {
+  padding: 8px;
+}
+.ws-box label {
+  margin: 10px 0;
+}
+@media (max-width: 850px) {
+  .ws-grid {
+    grid-template-columns: 1fr;
+  }
+}

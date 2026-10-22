@@ -1,0 +1,104 @@
+.trace42-unit {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.4px;
+  color: #d6b45b;
+  margin-top: 3px;
+  font-weight: 600;
+}
+.measure.trace42-jump {
+  outline: 2px solid #d6b45b;
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+.trace42-backup {
+  display: grid;
+  gap: 6px;
+  margin: 14px 10px 0;
+}
+.trace42-backup .side-note {
+  margin: 0 2px 2px;
+}
+.trace42-backup button {
+  background: #151d22;
+  border: 1px solid #344048;
+  color: #d6e0e7;
+  border-radius: 7px;
+  padding: 8px 11px;
+  font-size: 12px;
+  text-align: left;
+}
+.trace42-backup button:hover {
+  background: #2a4558;
+  color: #fff;
+}
+/* Grid track sized to its widest child pushed the dashboard past phone width. */
+.dash-shell,
+.trace18-page {
+  grid-template-columns: minmax(0, 1fr);
+}
+.dash-shell > *,
+.trace18-page > *,
+.task-tile {
+  min-width: 0;
+}
+@media (max-width: 850px) {
+  .task-grid,
+  .bottom-grid,
+  .analytics-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 520px) {
+  .kpi-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 850px) {
+  .trace42-backup {
+    grid-template-columns: 1fr 1fr;
+    margin: 10px 0 0;
+  }
+}
+.trace42-date-error {
+  color: #ff8f94;
+  font-size: 12px;
+  margin: 2px 0 4px;
+}
+.trace-a-mark {
+  width: 18px;
+  height: 15px;
+  flex: none;
+  fill: currentColor;
+}
+.sidebar nav button .trace-a-mark {
+  color: #7d8a92;
+  transition: color 0.15s;
+}
+.sidebar nav button.active .trace-a-mark,
+.sidebar nav button:hover .trace-a-mark {
+  color: #d6b45b;
+}
+.quick-actions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+.quick-actions .trace-a-mark {
+  width: 15px;
+  height: 13px;
+  color: #c9ab61;
+}
+.task-icon {
+  display: inline-flex;
+  color: #c9ab61;
+}
+.task-icon .trace-a-mark {
+  width: 30px;
+  height: 25px;
+}
+@media print {
+  .trace42-backup {
+    display: none !important;
+  }
+}
