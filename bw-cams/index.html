@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BW Cams & Accessories | RV Backup Cameras, Monitors & Wiring</title>
+<meta name="description" content="BW Cams & Accessories: RV backup cameras, side-view cameras, monitors, cables and installation parts from Furrion, Voyager, Garmin, Haloview and more.">
+<style>
+:root{
+  --navy:#0f2238; --navy-2:#173353; --orange:#f26b1d; --orange-d:#d4570f;
+  --bg:#f5f7fa; --card:#ffffff; --text:#1b2533; --muted:#5d6b7c; --line:#dde3ea;
+  --green:#1f9d55; --radius:12px; --shadow:0 2px 10px rgba(15,34,56,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input,select{font:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+
+/* Top bar + header */
+.topbar{background:var(--orange);color:#fff;font-size:.85rem;text-align:center;padding:6px 12px;font-weight:600}
+header{background:var(--navy);color:#fff;position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(0,0,0,.25)}
+.nav{display:flex;align-items:center;gap:24px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.25rem;letter-spacing:.3px;white-space:nowrap}
+.logo .mark{width:40px;height:40px;border-radius:10px;background:var(--orange);display:grid;place-items:center}
+.logo small{display:block;font-size:.68rem;font-weight:600;color:#9fb3c8;letter-spacing:1.5px;text-transform:uppercase}
+.nav ul{display:flex;gap:22px;list-style:none;margin-left:auto}
+.nav ul a{color:#d5e0eb;font-weight:600;font-size:.95rem}
+.nav ul a:hover{color:#fff}
+.cart-btn{position:relative;background:var(--navy-2);padding:10px 14px;border-radius:10px;display:flex;align-items:center;gap:8px;font-weight:700}
+.cart-btn:hover{background:#21456e}
+.cart-count{background:var(--orange);border-radius:999px;min-width:22px;height:22px;font-size:.8rem;display:grid;place-items:center;padding:0 6px}
+.menu-toggle{display:none;color:#fff;font-size:1.5rem;margin-left:auto}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,#1d4269 100%);color:#fff;padding:64px 0 72px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center}
+.eyebrow{display:inline-block;background:rgba(242,107,29,.18);color:#ffb185;padding:5px 12px;border-radius:999px;font-size:.8rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
+.hero h1{font-size:clamp(2rem,4.4vw,3.2rem);line-height:1.1;margin-bottom:16px}
+.hero h1 span{color:var(--orange)}
+.hero p{color:#c4d3e2;font-size:1.1rem;max-width:520px;margin-bottom:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 22px;border-radius:10px;font-weight:700;transition:.15s}
+.btn-primary{background:var(--orange);color:#fff}
+.btn-primary:hover{background:var(--orange-d)}
+.btn-ghost{border:2px solid rgba(255,255,255,.35);color:#fff}
+.btn-ghost:hover{border-color:#fff}
+.btn-dark{background:var(--navy);color:#fff}
+.btn-dark:hover{background:var(--navy-2)}
+.btn-outline{border:2px solid var(--line);color:var(--text);background:#fff}
+.btn-outline:hover{border-color:var(--navy)}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.hero-stats{display:flex;gap:32px;margin-top:36px;flex-wrap:wrap}
+.hero-stats b{display:block;font-size:1.6rem;color:#fff}
+.hero-stats span{color:#9fb3c8;font-size:.85rem}
+.hero-art svg{width:100%;height:auto;display:block}
+
+/* Trust bar */
+.trust{background:#fff;border-bottom:1px solid var(--line)}
+.trust .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:20px}
+.trust .wrap>div{display:flex;gap:12px;align-items:center;font-size:.9rem}
+.trust .ico{width:40px;height:40px;flex:none;border-radius:10px;background:#fff1e8;color:var(--orange);display:grid;place-items:center;font-size:1.2rem}
+.trust b{display:block}
+.trust span{color:var(--muted);font-size:.82rem}
+
+/* Sections */
+section{padding:64px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:28px;flex-wrap:wrap}
+.sec-head h2{font-size:1.9rem;line-height:1.2}
+.sec-head p{color:var(--muted);max-width:620px}
+
+/* Category tiles */
+.cats{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.cat{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px 12px;text-align:center;transition:.15s}
+.cat:hover{border-color:var(--orange);transform:translateY(-2px);box-shadow:var(--shadow)}
+.cat svg{width:56px;height:56px;margin:0 auto 8px;display:block}
+.cat b{display:block;font-size:.92rem}
+.cat span{font-size:.78rem;color:var(--muted)}
+
+/* Finder */
+.finder{background:var(--navy);color:#fff;border-radius:18px;padding:36px;display:grid;grid-template-columns:1fr 1.4fr;gap:36px}
+.finder h2{font-size:1.8rem;margin-bottom:10px}
+.finder p{color:#b8c8d8}
+.q{margin-bottom:18px}
+.q label.t{display:block;font-weight:700;margin-bottom:8px;font-size:.95rem}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt input{display:none}
+.opt span{display:inline-block;padding:8px 14px;border-radius:999px;border:1.5px solid #3a5878;color:#d5e0eb;font-size:.88rem;font-weight:600;cursor:pointer;transition:.12s}
+.opt input:checked+span{background:var(--orange);border-color:var(--orange);color:#fff}
+.finder-results{margin-top:24px;display:grid;gap:10px}
+.fr{background:var(--navy-2);border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:12px}
+.fr svg{width:46px;height:46px;flex:none;background:#fff;border-radius:8px}
+.fr .info{flex:1;min-width:0}
+.fr .info b{display:block;font-size:.95rem}
+.fr .info span{font-size:.8rem;color:#9fb3c8}
+.fr .why{display:block;font-size:.78rem;color:#ffb185}
+.fr .p{font-weight:800;white-space:nowrap}
+
+/* Shop / database */
+.shop{display:grid;grid-template-columns:250px 1fr;gap:28px;align-items:start}
+.filters{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px;position:sticky;top:88px}
+.filters h3{font-size:1rem;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
+.filters h3 button{font-size:.8rem;color:var(--orange);font-weight:700}
+.fgroup{margin-bottom:18px}
+.fgroup>label{display:block;font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin-bottom:8px}
+.fgroup select,.fgroup input[type=search]{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:#fff}
+.chk{display:flex;align-items:center;gap:8px;font-size:.9rem;padding:3px 0;cursor:pointer}
+.chk input{accent-color:var(--orange);width:16px;height:16px}
+.chk em{margin-left:auto;font-style:normal;color:var(--muted);font-size:.78rem}
+input[type=range]{width:100%;accent-color:var(--orange)}
+.range-val{font-size:.85rem;color:var(--muted)}
+.toolbar{display:flex;gap:12px;align-items:center;margin-bottom:18px;flex-wrap:wrap}
+.toolbar .search{flex:1;min-width:220px;position:relative}
+.toolbar .search input{width:100%;padding:12px 14px 12px 40px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.toolbar .search::before{content:"⌕";position:absolute;left:14px;top:50%;transform:translateY(-52%);font-size:1.3rem;color:var(--muted)}
+.toolbar select{padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.count{color:var(--muted);font-size:.9rem;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:.15s}
+.card:hover{box-shadow:0 8px 24px rgba(15,34,56,.12);transform:translateY(-2px)}
+.card .img{background:linear-gradient(180deg,#eef2f6,#e3e9f0);aspect-ratio:4/3;display:grid;place-items:center;position:relative;cursor:pointer}
+.card .img svg{width:62%;height:auto}
+.badge{position:absolute;top:10px;left:10px;font-size:.7rem;font-weight:800;padding:3px 8px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px}
+.b-wireless{background:#e3f1ff;color:#1565c0}
+.b-wired{background:#ececec;color:#444}
+.b-prewire{background:#e5f6ec;color:#1b7a43}
+.b-universal{background:#f3eafc;color:#6a3fa0}
+.card .body{padding:14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card .brand{font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--orange)}
+.card h4{font-size:.98rem;line-height:1.3;cursor:pointer}
+.card h4:hover{color:var(--orange-d)}
+.stars{color:#f5a623;font-size:.85rem;letter-spacing:1px}
+.stars em{color:var(--muted);font-style:normal;font-size:.78rem;letter-spacing:0;margin-left:4px}
+.card .sku{font-size:.75rem;color:var(--muted)}
+.card .bottom{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:8px}
+.price{font-size:1.25rem;font-weight:800}
+.add{background:var(--navy);color:#fff;padding:8px 12px;border-radius:8px;font-weight:700;font-size:.85rem}
+.add:hover{background:var(--orange)}
+.cmp{display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--muted);cursor:pointer}
+.cmp input{accent-color:var(--orange)}
+.empty{grid-column:1/-1;text-align:center;padding:48px;background:#fff;border:1px dashed var(--line);border-radius:var(--radius);color:var(--muted)}
+
+/* Brands */
+.brands{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.brand-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px;display:flex;flex-direction:column;gap:8px}
+.brand-card .top{display:flex;align-items:center;gap:12px}
+.brand-logo{width:46px;height:46px;border-radius:10px;display:grid;place-items:center;color:#fff;font-weight:800;font-size:1.1rem;flex:none}
+.brand-card h4{font-size:1.05rem}
+.brand-card .hq{font-size:.8rem;color:var(--muted)}
+.brand-card p{font-size:.88rem;color:#3c4a5a}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:.72rem;background:#eef2f6;padding:3px 8px;border-radius:6px;font-weight:600;color:#3c4a5a}
+.brand-card .link{margin-top:auto;font-weight:700;color:var(--orange);font-size:.88rem;padding-top:6px;text-align:left}
+
+/* Connector guide table */
+.table-wrap{overflow-x:auto;background:#fff;border:1px solid var(--line);border-radius:var(--radius)}
+table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:720px}
+th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:#f0f4f8;font-size:.78rem;text-transform:uppercase;letter-spacing:.6px;color:var(--muted)}
+tr:last-child td{border-bottom:none}
+td b{display:block}
+
+/* Support / FAQ */
+.support{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+details{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin-bottom:10px}
+summary{font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between}
+summary::after{content:"+";color:var(--orange);font-size:1.3rem;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin-top:10px;color:#3c4a5a;font-size:.92rem}
+.contact{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.contact h3{margin-bottom:6px}
+.contact p{color:var(--muted);font-size:.92rem;margin-bottom:16px}
+.form-row{margin-bottom:12px}
+.form-row label{display:block;font-size:.82rem;font-weight:700;margin-bottom:4px}
+.form-row input,.form-row select,.form-row textarea{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+.hours{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;font-size:.88rem}
+.hours div{background:#f5f7fa;border-radius:8px;padding:10px}
+.hours b{display:block}
+
+/* Footer */
+footer{background:var(--navy);color:#9fb3c8;padding:48px 0 24px;margin-top:20px}
+.foot{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:32px;margin-bottom:32px}
+footer h5{color:#fff;font-size:.95rem;margin-bottom:12px}
+footer ul{list-style:none;display:grid;gap:7px;font-size:.88rem}
+footer a:hover{color:#fff}
+.newsletter{display:flex;gap:8px;margin-top:14px}
+.newsletter input{flex:1;padding:10px 12px;border-radius:8px;border:none;min-width:0}
+.copy{border-top:1px solid #24405f;padding-top:18px;font-size:.8rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+/* Drawer / modal */
+.overlay{position:fixed;inset:0;background:rgba(10,20,35,.55);z-index:90;opacity:0;pointer-events:none;transition:.2s}
+.overlay.show{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(420px,100%);background:#fff;z-index:100;transform:translateX(100%);transition:.25s;display:flex;flex-direction:column}
+.drawer.show{transform:none}
+.drawer-head{padding:18px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.drawer-head h3{font-size:1.15rem}
+.x{font-size:1.6rem;line-height:1;color:var(--muted)}
+.drawer-body{flex:1;overflow-y:auto;padding:16px 20px}
+.ci{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.ci svg{width:58px;height:58px;flex:none;background:#eef2f6;border-radius:8px;padding:4px}
+.ci .n{flex:1;min-width:0}
+.ci .n b{display:block;font-size:.9rem;line-height:1.3}
+.ci .n span{font-size:.78rem;color:var(--muted)}
+.qty{display:flex;align-items:center;gap:6px;margin-top:6px}
+.qty button{width:26px;height:26px;border:1px solid var(--line);border-radius:6px;font-weight:700}
+.qty .rm{margin-left:8px;width:auto;border:none;color:#c0392b;font-size:.78rem}
+.ci .lp{font-weight:800}
+.drawer-foot{padding:18px 20px;border-top:1px solid var(--line);background:#fafbfc}
+.sumrow{display:flex;justify-content:space-between;margin-bottom:6px;font-size:.92rem}
+.sumrow.total{font-size:1.15rem;font-weight:800;margin:10px 0 14px}
+.ship-note{font-size:.8rem;color:var(--green);margin-bottom:10px;font-weight:600}
+.modal{position:fixed;top:50%;left:50%;transform:translate(-50%,-46%);width:min(860px,94vw);max-height:90vh;overflow-y:auto;background:#fff;border-radius:16px;z-index:110;opacity:0;pointer-events:none;transition:.2s}
+.modal.show{opacity:1;pointer-events:auto;transform:translate(-50%,-50%)}
+.modal-inner{padding:28px;position:relative}
+.modal .x{position:absolute;top:16px;right:18px}
+.pd{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:28px}
+.pd .img{background:linear-gradient(180deg,#eef2f6,#e3e9f0);border-radius:12px;display:grid;place-items:center;aspect-ratio:1;position:relative}
+.pd .img svg{width:70%;height:auto;max-height:100%}
+.pd h3{font-size:1.4rem;line-height:1.25;margin:4px 0 8px}
+.pd .desc{color:#3c4a5a;margin:12px 0;font-size:.95rem}
+.spec{width:100%;min-width:0;font-size:.88rem;margin:12px 0}
+.spec td{padding:7px 0;border-bottom:1px solid var(--line)}
+.spec td:first-child{color:var(--muted);width:42%}
+.fits{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 16px}
+.pd .actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.instock{color:var(--green);font-weight:700;font-size:.88rem;margin-bottom:10px}
+.related{margin-top:24px;border-top:1px solid var(--line);padding-top:18px}
+.related h4{margin-bottom:10px}
+.related .list{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+.rel{border:1px solid var(--line);border-radius:10px;padding:10px;display:flex;gap:8px;align-items:center;cursor:pointer;font-size:.82rem}
+.rel:hover{border-color:var(--orange)}
+.rel svg{width:40px;height:40px;flex:none}
+.cmp-table{min-width:0}
+.cmp-table td,.cmp-table th{font-size:.86rem}
+.cmp-table th{width:22%}
+.cmp-tray{position:fixed;bottom:16px;left:50%;transform:translate(-50%,140%);background:var(--navy);color:#fff;border-radius:14px;padding:12px 16px;display:flex;align-items:center;gap:14px;z-index:60;box-shadow:0 10px 30px rgba(0,0,0,.3);transition:.25s;max-width:94vw}
+.cmp-tray.show{transform:translate(-50%,0)}
+.cmp-tray .names{font-size:.85rem;color:#c4d3e2}
+.toast{position:fixed;bottom:24px;right:24px;background:var(--green);color:#fff;padding:12px 18px;border-radius:10px;font-weight:700;z-index:120;transform:translateY(150%);transition:.25s;box-shadow:var(--shadow)}
+.toast.show{transform:none}
+.confirm{text-align:center;padding:16px 0}
+.confirm .big{font-size:3rem}
+.confirm h3{margin:8px 0}
+.confirm p{color:var(--muted)}
+
+@media (max-width:980px){
+  .hero .wrap,.finder,.support,.pd{grid-template-columns:1fr}
+  .cats{grid-template-columns:repeat(3,1fr)}
+  .shop{grid-template-columns:1fr}
+  .filters{position:static}
+  .trust .wrap{grid-template-columns:1fr 1fr}
+  .foot{grid-template-columns:1fr 1fr}
+  .nav ul{display:none;position:absolute;top:68px;left:0;right:0;background:var(--navy);flex-direction:column;padding:16px 20px;gap:14px}
+  .nav ul.open{display:flex}
+  .menu-toggle{display:block}
+  .cart-btn{margin-left:0}
+}
+@media (max-width:560px){
+  .wrap{padding:0 16px}
+  .cats{grid-template-columns:repeat(2,1fr)}
+  .trust .wrap{grid-template-columns:1fr}
+  .foot{grid-template-columns:1fr}
+  .finder{padding:22px}
+  section{padding:44px 0}
+  .nav{gap:10px}
+  .logo{font-size:.95rem;white-space:normal;line-height:1.15}
+  .logo small{display:none}
+  .logo .mark{width:34px;height:34px}
+  .cart-btn{padding:8px 10px}
+  .cart-btn .lbl{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">🚚 Free shipping on orders over $99 &nbsp;•&nbsp; Fits-Your-Rig Guarantee &nbsp;•&nbsp; Call 1-800-BW-CAMS1</div>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo" aria-label="BW Cams and Accessories home">
+      <div class="mark">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+      </div>
+      <div>BW Cams &amp; Accessories<small>RV Vision Specialists</small></div>
+    </a>
+    <ul id="navlinks">
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#finder">Camera Finder</a></li>
+      <li><a href="#brands">Brands</a></li>
+      <li><a href="#wiring">Wiring Guide</a></li>
+      <li><a href="#support">Support</a></li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+    <button class="cart-btn" id="cartBtn" aria-label="Open cart">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+      <span class="lbl">Cart</span><span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</header>
+
+<div id="top"></div>
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">RV Backup & Observation Systems</span>
+      <h1>See every inch.<br><span>Back up with confidence.</span></h1>
+      <p>Backup cameras, side-view systems, monitors and the wiring to connect them, from the brands RVers trust. Every order is checked by our team to make sure it fits your rig.</p>
+      <div class="hero-ctas">
+        <a href="#finder" class="btn btn-primary">Find My Camera →</a>
+        <a href="#shop" class="btn btn-ghost">Browse All Products</a>
+      </div>
+      <div class="hero-stats">
+        <div><b id="statProducts">0</b><span>Products in stock</span></div>
+        <div><b id="statBrands">0</b><span>Trusted brands</span></div>
+        <div><b>4.8★</b><span>Customer rating</span></div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 520 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Overhead view of an RV with camera coverage zones">
+        <defs>
+          <radialGradient id="cone" cx="0" cy="0.5" r="1"><stop offset="0" stop-color="#f26b1d" stop-opacity=".55"/><stop offset="1" stop-color="#f26b1d" stop-opacity="0"/></radialGradient>
+          <radialGradient id="cone2" cx="0.5" cy="0" r="1"><stop offset="0" stop-color="#4fc3f7" stop-opacity=".5"/><stop offset="1" stop-color="#4fc3f7" stop-opacity="0"/></radialGradient>
+        </defs>
+        <rect x="0" y="0" width="520" height="340" rx="20" fill="#0c1c2e" opacity=".5"/>
+        <g stroke="#2c4a6b" stroke-dasharray="14 12" stroke-width="3"><line x1="0" y1="70" x2="520" y2="70"/><line x1="0" y1="270" x2="520" y2="270"/></g>
+        <path d="M352 170 L520 80 L520 260 Z" fill="url(#cone)"/>
+        <path d="M250 112 L170 0 L330 0 Z" fill="url(#cone2)"/>
+        <path d="M250 228 L170 340 L330 340 Z" fill="url(#cone2)"/>
+        <rect x="70" y="112" width="282" height="116" rx="14" fill="#e9eef4"/>
+        <rect x="70" y="112" width="70" height="116" rx="14" fill="#cfd9e4"/>
+        <rect x="84" y="126" width="38" height="88" rx="6" fill="#5b86b3"/>
+        <rect x="160" y="128" width="170" height="84" rx="8" fill="#dbe3ec"/>
+        <rect x="175" y="140" width="40" height="22" rx="4" fill="#b6c5d6"/>
+        <rect x="235" y="140" width="40" height="22" rx="4" fill="#b6c5d6"/>
+        <rect x="175" y="176" width="100" height="22" rx="4" fill="#b6c5d6"/>
+        <rect x="290" y="140" width="28" height="58" rx="4" fill="#b6c5d6"/>
+        <circle cx="352" cy="170" r="9" fill="#f26b1d" stroke="#fff" stroke-width="3"/>
+        <circle cx="250" cy="112" r="7" fill="#4fc3f7" stroke="#fff" stroke-width="3"/>
+        <circle cx="250" cy="228" r="7" fill="#4fc3f7" stroke="#fff" stroke-width="3"/>
+        <g font-family="Segoe UI,Arial" font-weight="700" font-size="13" fill="#fff">
+          <rect x="400" y="156" width="104" height="28" rx="14" fill="#f26b1d"/><text x="452" y="175" text-anchor="middle">REAR CAM</text>
+          <rect x="296" y="30" width="110" height="28" rx="14" fill="#1e88c7"/><text x="351" y="49" text-anchor="middle">SIDE CAM L</text>
+          <rect x="296" y="284" width="110" height="28" rx="14" fill="#1e88c7"/><text x="351" y="303" text-anchor="middle">SIDE CAM R</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<div class="trust">
+  <div class="wrap">
+    <div><div class="ico">✔</div><div><b>Fits-Your-Rig Guarantee</b><span>Doesn't fit? We cover return shipping.</span></div></div>
+    <div><div class="ico">🚚</div><div><b>Free Shipping $99+</b><span>Ships in 1 business day</span></div></div>
+    <div><div class="ico">🛡</div><div><b>2-Year BW Warranty</b><span>On top of manufacturer coverage</span></div></div>
+    <div><div class="ico">☎</div><div><b>Real RVers on the Phone</b><span>Mon–Sat, US-based support</span></div></div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><div><h2>Shop by Category</h2><p>Everything from complete systems to the cable that gets your camera to the cab.</p></div></div>
+    <div class="cats" id="cats"></div>
+  </div>
+</section>
+
+<section id="finder" style="padding-top:0">
+  <div class="wrap">
+    <div class="finder">
+      <div>
+        <span class="eyebrow">Camera Finder</span>
+        <h2>Not sure what you need?</h2>
+        <p>Answer four quick questions and we'll match you with systems from our catalog that fit your rig, your wiring, and your budget.</p>
+        <p style="margin-top:14px;font-size:.88rem">💡 <b style="color:#fff">Tip:</b> Look on the back cap of your RV, above the license plate or near the top center. A small cover plate or "shark fin" bracket there usually means your rig is <b style="color:#fff">prewired</b>.</p>
+      </div>
+      <div>
+        <div class="q"><label class="t">1. What do you drive or tow?</label><div class="opts" data-q="rig"></div></div>
+        <div class="q"><label class="t">2. Is your RV prewired for a camera?</label><div class="opts" data-q="prewire"></div></div>
+        <div class="q"><label class="t">3. Wired or wireless?</label><div class="opts" data-q="conn"></div></div>
+        <div class="q"><label class="t">4. Budget for the system?</label><div class="opts" data-q="budget"></div></div>
+        <button class="btn btn-primary" id="findBtn" style="width:100%">Show My Matches</button>
+        <div class="finder-results" id="finderResults"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="shop" style="background:#eef2f6">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><h2>Product Catalog</h2><p>Search our full catalog of cameras, monitors, cables, mounts and parts. Tick "Compare" on up to 3 items to see them side by side.</p></div>
+    </div>
+    <div class="shop">
+      <aside class="filters">
+        <h3>Filters <button id="clearFilters">Clear all</button></h3>
+        <div class="fgroup"><label>Category</label><div id="fCat"></div></div>
+        <div class="fgroup"><label>Connection</label><div id="fConn"></div></div>
+        <div class="fgroup"><label>Brand</label><select id="fBrand"><option value="">All brands</option></select></div>
+        <div class="fgroup"><label>Fits Rig Type</label><select id="fRig"><option value="">Any rig</option></select></div>
+        <div class="fgroup"><label>Max Price</label><input type="range" id="fPrice" min="10" max="900" step="10" value="900"><div class="range-val">Up to <b id="fPriceVal">$900</b></div></div>
+        <div class="fgroup"><label class="chk" style="text-transform:none;letter-spacing:0;font-weight:600;color:var(--text);font-size:.9rem"><input type="checkbox" id="fNight"> Night vision only</label></div>
+      </aside>
+      <div>
+        <div class="toolbar">
+          <div class="search"><input type="search" id="q" placeholder="Search by name, brand, SKU, or spec (e.g. &quot;50 ft&quot;, &quot;4-pin&quot;)"></div>
+          <select id="sort">
+            <option value="featured">Sort: Featured</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="rating">Top Rated</option>
+            <option value="name">Name A–Z</option>
+          </select>
+        </div>
+        <div class="count" id="count"></div>
+        <div class="grid" id="grid"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="brands">
+  <div class="wrap">
+    <div class="sec-head"><div><h2>Brands We Carry</h2><p>We stock the major RV camera makers plus our own <b>BW Pro</b> line of cables, mounts and install parts.</p></div></div>
+    <div class="brands" id="brandGrid"></div>
+  </div>
+</section>
+
+<section id="wiring" style="background:#eef2f6">
+  <div class="wrap">
+    <div class="sec-head"><div><h2>Connector &amp; Wiring Guide</h2><p>Using the wrong connector is the most common reason camera parts get returned. Check this chart before you order cables or adapters.</p></div></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Connector</th><th>Where you'll find it</th><th>Carries</th><th>Typical brands</th><th>What to buy</th></tr></thead>
+        <tbody id="connTable"></tbody>
+      </table>
+    </div>
+    <p style="margin-top:14px;font-size:.88rem;color:var(--muted)">⚠ Always disconnect the coach battery before wiring, and fuse any new 12V connection close to the power source. Not sure what you have? Send us a photo through the support form below and we'll identify it.</p>
+  </div>
+</section>
+
+<section id="support">
+  <div class="wrap">
+    <div class="sec-head"><div><h2>Support &amp; FAQ</h2><p>Answers from the team that installs these systems on our own rigs.</p></div></div>
+    <div class="support">
+      <div id="faq"></div>
+      <div class="contact">
+        <h3>Ask an RV Camera Specialist</h3>
+        <p>Tell us about your rig and we'll reply within one business day.</p>
+        <form id="contactForm">
+          <div class="form-row"><label for="cName">Name</label><input id="cName" required></div>
+          <div class="form-row"><label for="cEmail">Email</label><input id="cEmail" type="email" required></div>
+          <div class="form-row"><label for="cRig">Year / Make / Model of RV</label><input id="cRig" placeholder="e.g. 2022 Grand Design Imagine 2600RB"></div>
+          <div class="form-row"><label for="cMsg">Question</label><textarea id="cMsg" rows="3" required></textarea></div>
+          <button class="btn btn-dark" type="submit" style="width:100%">Send Message</button>
+        </form>
+        <div class="hours">
+          <div><b>Phone</b>1-800-BW-CAMS1</div>
+          <div><b>Hours</b>Mon–Fri 8–6, Sat 9–2 CT</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <div class="logo" style="color:#fff;margin-bottom:12px"><div class="mark"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div><div>BW Cams &amp; Accessories</div></div>
+        <p style="font-size:.9rem;max-width:320px">RV backup cameras, monitors and installation parts, sold by people who actually RV.</p>
+        <form class="newsletter" id="newsForm"><input type="email" placeholder="Email for deals & install tips" required><button class="btn btn-primary" style="padding:10px 14px">Join</button></form>
+      </div>
+      <div><h5>Shop</h5><ul><li><a href="#shop" data-cat="Camera System">Camera Systems</a></li><li><a href="#shop" data-cat="Camera">Add-On Cameras</a></li><li><a href="#shop" data-cat="Monitor">Monitors</a></li><li><a href="#shop" data-cat="Cable">Cables &amp; Wiring</a></li><li><a href="#shop" data-cat="Mount">Mounts</a></li></ul></div>
+      <div><h5>Help</h5><ul><li><a href="#finder">Camera Finder</a></li><li><a href="#wiring">Wiring Guide</a></li><li><a href="#support">FAQ</a></li><li><a href="#support">Returns &amp; Warranty</a></li></ul></div>
+      <div><h5>Company</h5><ul><li><a href="#brands">Our Brands</a></li><li><a href="#support">Contact Us</a></li><li><a href="#support">Installer Network</a></li><li><a href="#support">Fleet &amp; Dealer Pricing</a></li></ul></div>
+    </div>
+    <div class="copy"><span>© <span id="yr"></span> BW Cams &amp; Accessories. All rights reserved.</span><span>Brand names and trademarks belong to their respective owners. Prices and specs may change; confirm with the manufacturer before installing.</span></div>
+  </div>
+</footer>
+
+<!-- Cart drawer -->
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Shopping cart">
+  <div class="drawer-head"><h3>Your Cart</h3><button class="x" id="closeCart" aria-label="Close">×</button></div>
+  <div class="drawer-body" id="cartBody"></div>
+  <div class="drawer-foot" id="cartFoot"></div>
+</aside>
+
+<!-- Modal -->
+<div class="modal" id="modal" role="dialog" aria-modal="true"><div class="modal-inner"><button class="x" id="closeModal" aria-label="Close">×</button><div id="modalContent"></div></div></div>
+
+<!-- Compare tray -->
+<div class="cmp-tray" id="cmpTray"><div class="names" id="cmpNames"></div><button class="btn btn-primary" id="cmpGo" style="padding:8px 14px">Compare</button><button id="cmpClear" style="color:#9fb3c8;font-size:.85rem">Clear</button></div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* =========================================================
+   DATABASE: BRANDS
+   ========================================================= */
+const BRANDS = [
+  {name:"Furrion", color:"#c8102e", hq:"Elkhart, IN (Lippert)", about:"The most common factory-installed RV camera brand. Many new travel trailers and fifth wheels ship prewired for the Furrion Vision S system.", known:["Factory prewire","Vision S","Wireless","Marker-light mounts"]},
+  {name:"Voyager", color:"#1d3f8f", hq:"Elkhart, IN (ASA Electronics)", about:"Commercial-grade wired observation systems. Common on Class A motorhomes and buses, and known for long-lasting, weather-sealed cameras.", known:["Wired","Commercial grade","Class A OEM","Heated cameras"]},
+  {name:"Garmin", color:"#007cc3", hq:"Olathe, KS", about:"RV-specific GPS navigators that double as camera monitors when paired with the BC 50 wireless backup camera.", known:["RV GPS","BC 50","Wireless","Night vision"]},
+  {name:"Haloview", color:"#00a3a1", hq:"City of Industry, CA", about:"Digital wireless systems that expand to four cameras. Popular with full-timers who want a split-screen view of the whole rig.", known:["Digital wireless","Quad view","DVR","Expandable"]},
+  {name:"Rear View Safety", color:"#e0a100", hq:"Brooklyn, NY", about:"Wired and wireless systems for RVs, trucks and fleets, with heavy-duty cameras and long cable kits.", known:["Wired","Fleet","Long cables","Quad monitors"]},
+  {name:"Echomaster", color:"#d94f1e", hq:"Elkhart, IN (Brandmotion)", about:"OEM-quality camera systems built to commercial standards and used by many upfitters and dealers.", known:["Commercial","Wired","OEM fit"]},
+  {name:"AMTIFO", color:"#4a4a4a", hq:"Shenzhen, China", about:"Low-cost HD wireless backup systems with a strong following among weekend campers.", known:["Budget","Wireless HD","DIY friendly"]},
+  {name:"eRapta", color:"#6d28d9", hq:"Shenzhen, China", about:"Affordable wired backup camera kits that come with long cables. Popular for first-time DIY installs.", known:["Budget","Wired","4-pin kits"]},
+  {name:"Yakry", color:"#0f766e", hq:"Shenzhen, China", about:"Wireless dual- and quad-camera kits for trailers and fifth wheels, with digital signal for a stable picture.", known:["Wireless","Dual camera","Budget"]},
+  {name:"Auto-Vox", color:"#2563eb", hq:"Shenzhen, China", about:"Solar-powered wireless backup cameras that install with no wiring. A good fit for rentals and quick setups.", known:["Solar","No wiring","Wireless"]},
+  {name:"Swift Hitch", color:"#b91c1c", hq:"Grand Rapids, MI", about:"Portable, magnetic, rechargeable wireless cameras. Stick one on for hitching up, then move it wherever you need it.", known:["Magnetic","Portable","Rechargeable"]},
+  {name:"BW Pro", color:"#f26b1d", hq:"BW Cams House Brand", about:"Our own line of extension cables, adapters, mounts and install hardware. Tested with every system we sell.", known:["Cables","Adapters","Mounts","Install parts"]}
+];
+
+/* =========================================================
+   DATABASE: PRODUCTS
+   cat: Camera System | Camera | Monitor | Cable | Mount | Power & Parts
+   conn: Wireless | Wired | Prewire | Universal
+   ========================================================= */
+const ALL = ["Travel Trailer","Fifth Wheel","Toy Hauler","Class A","Class C","Truck Camper"];
+const TOWABLES = ["Travel Trailer","Fifth Wheel","Toy Hauler"];
+const MOTOR = ["Class A","Class C"];
+let _id=0;
+const P = (o)=>({id:++_id, sku:"BW-"+String(1000+_id*7), rating:4.5, reviews:120, night:false, fits:ALL, featured:0, ...o});
+
+const PRODUCTS = [
+  // ---- Camera Systems
+  P({name:"Vision S 7\" Wireless Backup System (1 Camera)", brand:"Furrion", cat:"Camera System", conn:"Prewire", price:449, rating:4.6, reviews:2143, night:true, featured:10, fits:TOWABLES,
+     desc:"Plug-and-play wireless system for RVs prewired with the Furrion mount. The rear camera snaps into the factory bracket and gets power from the coach wiring, so there are no cables to run to the cab.",
+     specs:{"Screen":"7\" LCD","Resolution":"720p","Range":"Up to 75 ft","Night Vision":"Infrared","Weather Rating":"IP67","Power":"12V coach prewire","Cameras Supported":"Up to 4"}}),
+  P({name:"Vision S 7\" Wireless 3-Camera System (Rear + 2 Side)", brand:"Furrion", cat:"Camera System", conn:"Prewire", price:699, rating:4.5, reviews:864, night:true, featured:8, fits:TOWABLES,
+     desc:"Covers the rear and both sides of a prewired trailer or fifth wheel. Side cameras replace your marker lights, and the monitor auto-switches when you signal a turn (with turn-signal hookup).",
+     specs:{"Screen":"7\" LCD","Resolution":"720p","Range":"Up to 75 ft","Night Vision":"Infrared","Weather Rating":"IP67","Power":"12V coach prewire","Cameras Included":"3"}}),
+  P({name:"Vision S 4.3\" Wireless Backup System", brand:"Furrion", cat:"Camera System", conn:"Prewire", price:279, rating:4.3, reviews:1011, night:true, fits:TOWABLES,
+     desc:"A smaller, lower-cost entry into the Vision S system. Uses the same prewire mount as the 7\" kit, and the camera works with the larger monitor if you upgrade later.",
+     specs:{"Screen":"4.3\" LCD","Resolution":"480p","Range":"Up to 75 ft","Night Vision":"Infrared","Weather Rating":"IP67","Power":"12V coach prewire","Cameras Supported":"Up to 2"}}),
+  P({name:"7\" Wired Rear Observation System w/ Color Camera", brand:"Voyager", cat:"Camera System", conn:"Wired", price:599, rating:4.8, reviews:612, night:true, featured:9, fits:["Class A","Class C","Fifth Wheel","Toy Hauler"],
+     desc:"A commercial-grade wired system. The camera has a motorized shutter, a heated lens, and a built-in microphone, and the wired connection means the picture won't drop out or lag.",
+     specs:{"Screen":"7\" LCD, 3 inputs","Resolution":"1080p sensor","Cable":"60 ft extension included","Night Vision":"Infrared","Weather Rating":"IP69K","Power":"12–24V","Extras":"Shutter, heater, audio"}}),
+  P({name:"7\" Wireless Observation System", brand:"Voyager", cat:"Camera System", conn:"Wireless", price:499, rating:4.4, reviews:338, night:true,
+     desc:"Voyager build quality with a digital wireless link. The camera only needs a 12V source at the rear, such as a running light or the backup-light circuit.",
+     specs:{"Screen":"7\" LCD","Resolution":"720p","Range":"Up to 70 ft","Night Vision":"Infrared","Weather Rating":"IP69K","Power":"12V","Cameras Supported":"Up to 2"}}),
+  P({name:"RV 795 Navigator + BC 50 Camera Bundle", brand:"Garmin", cat:"Camera System", conn:"Wireless", price:799, rating:4.6, reviews:455, night:true, featured:7,
+     desc:"A 7\" RV GPS with routing based on your rig's height, weight and length, bundled with the BC 50 wireless backup camera. The camera view shows right on the navigator.",
+     specs:{"Screen":"7\" GPS display","Camera Resolution":"720p","Range":"Up to 45 ft","Night Vision":"Yes","Weather Rating":"IPX7","Power":"12V","Extras":"RV routing, campground directory"}}),
+  P({name:"7\" Digital Wireless Backup System (Expandable to 4)", brand:"Haloview", cat:"Camera System", conn:"Wireless", price:299, rating:4.4, reviews:1834, night:true, featured:6,
+     desc:"A digital wireless system with a stable picture and room for four cameras. The monitor can show split or quad views.",
+     specs:{"Screen":"7\" IPS","Resolution":"720p","Range":"Up to 500 ft (open air)","Night Vision":"Infrared","Weather Rating":"IP69K","Power":"12–24V","Cameras Supported":"Up to 4"}}),
+  P({name:"10\" Quad-View Wireless System w/ DVR (4 Cameras)", brand:"Haloview", cat:"Camera System", conn:"Wireless", price:549, rating:4.5, reviews:402, night:true, fits:["Fifth Wheel","Toy Hauler","Class A","Class C"],
+     desc:"Four wireless cameras, a 10\" quad-split monitor, and loop recording to SD card. Built for full-timers who want to see the whole rig.",
+     specs:{"Screen":"10\" IPS, quad split","Resolution":"1080p","Range":"Up to 500 ft (open air)","Night Vision":"Infrared","Recording":"SD card DVR","Power":"12–24V","Cameras Included":"4"}}),
+  P({name:"7\" Wired Backup System w/ 66 ft Cable", brand:"Rear View Safety", cat:"Camera System", conn:"Wired", price:349, rating:4.5, reviews:977, night:true,
+     desc:"A dependable wired kit with a 66 ft cable, long enough for rigs up to about 40 ft. Uses 4-pin aviation connectors throughout.",
+     specs:{"Screen":"7\" LCD","Resolution":"720p","Cable":"66 ft 4-pin","Night Vision":"Infrared","Weather Rating":"IP69K","Power":"12–24V","Cameras Supported":"Up to 2"}}),
+  P({name:"7\" Commercial Backup System", brand:"Echomaster", cat:"Camera System", conn:"Wired", price:449, rating:4.6, reviews:221, night:true, fits:["Class A","Class C","Fifth Wheel","Toy Hauler"],
+     desc:"A heavy-duty system with a sealed, vibration-tested camera and a dimmable monitor for night driving.",
+     specs:{"Screen":"7\" LCD, dimmable","Resolution":"1080p","Cable":"65 ft 4-pin","Night Vision":"Infrared","Weather Rating":"IP69K","Power":"12–24V","Cameras Supported":"Up to 3"}}),
+  P({name:"7\" HD Wireless Backup System", brand:"AMTIFO", cat:"Camera System", conn:"Wireless", price:139, rating:4.2, reviews:5210, night:true,
+     desc:"A budget wireless kit with a clear HD picture. The camera wires into your running lights, and the monitor plugs into a 12V outlet.",
+     specs:{"Screen":"7\" LCD","Resolution":"1080p","Range":"Up to 80 ft","Night Vision":"Infrared","Weather Rating":"IP69","Power":"12–24V","Cameras Supported":"Up to 2"}}),
+  P({name:"7\" Wired Backup Camera Kit", brand:"eRapta", cat:"Camera System", conn:"Wired", price:89, rating:4.1, reviews:3870, night:true,
+     desc:"An inexpensive wired kit with a 66 ft cable. A good choice for DIYers who don't mind running wire.",
+     specs:{"Screen":"7\" LCD","Resolution":"720p","Cable":"66 ft 4-pin","Night Vision":"Infrared","Weather Rating":"IP69","Power":"12–24V","Cameras Supported":"Up to 2"}}),
+  P({name:"7\" Wireless Dual Camera System", brand:"Yakry", cat:"Camera System", conn:"Wireless", price:169, rating:4.2, reviews:2311, night:true, fits:TOWABLES.concat(["Class C"]),
+     desc:"Two wireless cameras (a rear view and a high-mount or hitch view) with a split-screen monitor. Easy to install on trailers.",
+     specs:{"Screen":"7\" LCD, split","Resolution":"1080p","Range":"Up to 100 ft","Night Vision":"Infrared","Weather Rating":"IP69","Power":"12–24V","Cameras Included":"2"}}),
+  P({name:"Solar Wireless Backup Camera System", brand:"Auto-Vox", cat:"Camera System", conn:"Wireless", price:159, rating:4.0, reviews:1450, night:true, fits:["Travel Trailer","Class C","Truck Camper"],
+     desc:"No wiring at all. The camera charges from its own solar panel and mounts in minutes, which makes it a good fit for rentals and seasonal rigs.",
+     specs:{"Screen":"5\" LCD","Resolution":"720p","Range":"Up to 65 ft","Night Vision":"Infrared","Weather Rating":"IP68","Power":"Solar + battery","Cameras Supported":"1"}}),
+  P({name:"Magnetic Wireless Hitch & Backup Camera", brand:"Swift Hitch", cat:"Camera System", conn:"Wireless", price:299, rating:4.3, reviews:689, night:true,
+     desc:"A rechargeable, battery-powered camera with a magnetic base. Use it to line up the hitch, then move it to the rear for backing up.",
+     specs:{"Screen":"5\" LCD","Resolution":"720p","Range":"Up to 100 ft","Night Vision":"Infrared","Battery":"Rechargeable, ~10 hrs","Weather Rating":"IP67","Mount":"Magnetic"}}),
+
+  // ---- Add-on Cameras
+  P({name:"Vision S Rear Camera (Prewire Mount)", brand:"Furrion", cat:"Camera", conn:"Prewire", price:179, rating:4.5, reviews:742, night:true, fits:TOWABLES,
+     desc:"A replacement or add-on rear camera for Vision S systems. It snaps into the factory bracket on prewired RVs.",
+     specs:{"Resolution":"720p","View Angle":"120°","Night Vision":"Infrared","Weather Rating":"IP67","Works With":"Vision S monitors"}}),
+  P({name:"Vision S Side Camera (Marker Light Replacement)", brand:"Furrion", cat:"Camera", conn:"Prewire", price:149, rating:4.4, reviews:390, night:true, fits:TOWABLES,
+     desc:"Replaces a side marker light with a camera that has the marker light built in. Gets power from the existing marker-light wiring.",
+     specs:{"Resolution":"720p","View Angle":"110°","Night Vision":"Infrared","Weather Rating":"IP67","Works With":"Vision S monitors"}}),
+  P({name:"Color Backup Camera w/ Shutter & Heater", brand:"Voyager", cat:"Camera", conn:"Wired", price:299, rating:4.8, reviews:301, night:true, fits:["Class A","Class C","Fifth Wheel","Toy Hauler"],
+     desc:"Voyager's commercial rear camera. The motorized shutter protects the lens while you're driving forward, and the heater keeps it clear of fog and ice.",
+     specs:{"Resolution":"1080p","View Angle":"130°","Night Vision":"Infrared","Weather Rating":"IP69K","Connector":"Voyager proprietary"}}),
+  P({name:"Side-View Camera Pair (Left + Right)", brand:"Voyager", cat:"Camera", conn:"Wired", price:389, rating:4.7, reviews:188, night:true, fits:["Class A","Class C"],
+     desc:"Turn-signal-activated side cameras that clear up lane-change blind spots on motorhomes.",
+     specs:{"Resolution":"720p","View Angle":"115°","Night Vision":"Infrared","Weather Rating":"IP69K","Connector":"Voyager proprietary"}}),
+  P({name:"BC 50 Wireless Backup Camera w/ Night Vision", brand:"Garmin", cat:"Camera", conn:"Wireless", price:229, rating:4.4, reviews:1650, night:true,
+     desc:"Pairs with compatible Garmin RV navigators and the Garmin Drive app. Includes a license-plate mount and runs on 12V reverse or running-light power.",
+     specs:{"Resolution":"720p","View Angle":"160°","Range":"Up to 45 ft","Night Vision":"Yes","Weather Rating":"IPX7"}}),
+  P({name:"Add-On Digital Wireless Camera", brand:"Haloview", cat:"Camera", conn:"Wireless", price:99, rating:4.3, reviews:870, night:true,
+     desc:"Adds a second, third or fourth camera to any Haloview digital wireless system.",
+     specs:{"Resolution":"720p","View Angle":"120°","Night Vision":"Infrared","Weather Rating":"IP69K","Works With":"Haloview digital monitors"}}),
+  P({name:"Heavy-Duty Side Camera", brand:"Rear View Safety", cat:"Camera", conn:"Wired", price:119, rating:4.4, reviews:512, night:true,
+     desc:"A side-mount camera with a mirror-image (reversed) picture and a 4-pin connector.",
+     specs:{"Resolution":"720p","View Angle":"120°","Night Vision":"Infrared","Weather Rating":"IP69K","Connector":"4-pin aviation"}}),
+  P({name:"Commercial Rear Camera 1080p", brand:"Echomaster", cat:"Camera", conn:"Wired", price:199, rating:4.6, reviews:143, night:true,
+     desc:"An OEM-grade rear camera with a sealed housing and a sapphire-coated lens.",
+     specs:{"Resolution":"1080p","View Angle":"130°","Night Vision":"Infrared","Weather Rating":"IP69K","Connector":"4-pin aviation"}}),
+  P({name:"Add-On Wireless Camera", brand:"AMTIFO", cat:"Camera", conn:"Wireless", price:59, rating:4.1, reviews:1320, night:true,
+     desc:"A second camera for AMTIFO wireless monitors. Mount it high for a long-distance view or at the hitch.",
+     specs:{"Resolution":"1080p","View Angle":"150°","Night Vision":"Infrared","Weather Rating":"IP69","Works With":"AMTIFO 7\" monitors"}}),
+
+  // ---- Monitors
+  P({name:"Vision S 7\" Monitor (Replacement)", brand:"Furrion", cat:"Monitor", conn:"Prewire", price:249, rating:4.3, reviews:410,
+     desc:"A replacement or upgrade monitor for Vision S systems. Supports up to four cameras with auto-switching.",
+     specs:{"Screen":"7\" LCD","Inputs":"4 wireless","Mount":"Suction or adhesive","Power":"12V plug"}}),
+  P({name:"7\" LCD Monitor, 3 Camera Inputs", brand:"Voyager", cat:"Monitor", conn:"Wired", price:399, rating:4.7, reviews:256, fits:["Class A","Class C","Fifth Wheel","Toy Hauler"],
+     desc:"A commercial monitor with auto-dimming, built-in speaker for camera audio, and triggers for turn signals and reverse.",
+     specs:{"Screen":"7\" LCD","Inputs":"3 wired","Audio":"Built-in speaker","Power":"12–24V"}}),
+  P({name:"10\" Quad-Split Wireless Monitor", brand:"Haloview", cat:"Monitor", conn:"Wireless", price:229, rating:4.4, reviews:388,
+     desc:"A large 10\" display with single, split and quad views, plus SD card recording.",
+     specs:{"Screen":"10\" IPS","Inputs":"4 wireless","Recording":"SD card DVR","Power":"12–24V"}}),
+  P({name:"7\" Quad-View Wired Monitor", brand:"Rear View Safety", cat:"Monitor", conn:"Wired", price:189, rating:4.3, reviews:604,
+     desc:"Connect up to four wired 4-pin cameras and view them all at once.",
+     specs:{"Screen":"7\" LCD","Inputs":"4 × 4-pin","Mount":"Bracket + sun shade","Power":"12–24V"}}),
+  P({name:"RV 895 8\" RV Navigator", brand:"Garmin", cat:"Monitor", conn:"Wireless", price:649, rating:4.5, reviews:302,
+     desc:"An 8\" RV GPS with custom routing. Pairs with up to four BC 50 wireless cameras.",
+     specs:{"Screen":"8\" touchscreen","Cameras Supported":"Up to 4 BC 50","Extras":"RV routing, voice assistant","Power":"12V"}}),
+
+  // ---- Cables & Adapters
+  P({name:"4-Pin Aviation Extension Cable, 10 ft", brand:"BW Pro", cat:"Cable", conn:"Universal", price:14, rating:4.7, reviews:980,
+     desc:"A shielded 4-pin cable that carries video, power and ground. Use it for short runs or to connect the monitor to the dash.",
+     specs:{"Length":"10 ft","Connector":"4-pin aviation M/F","Gauge":"24 AWG power","Jacket":"UV-resistant PVC"}}),
+  P({name:"4-Pin Aviation Extension Cable, 33 ft", brand:"BW Pro", cat:"Cable", conn:"Universal", price:22, rating:4.7, reviews:1430,
+     desc:"The right length for most truck-to-trailer and Class C runs.",
+     specs:{"Length":"33 ft","Connector":"4-pin aviation M/F","Gauge":"24 AWG power","Jacket":"UV-resistant PVC"}}),
+  P({name:"4-Pin Aviation Extension Cable, 50 ft", brand:"BW Pro", cat:"Cable", conn:"Universal", price:29, rating:4.8, reviews:1102,
+     desc:"For fifth wheels and Class A coaches up to about 40 ft.",
+     specs:{"Length":"50 ft","Connector":"4-pin aviation M/F","Gauge":"22 AWG power","Jacket":"UV-resistant PVC"}}),
+  P({name:"4-Pin Aviation Extension Cable, 66 ft", brand:"BW Pro", cat:"Cable", conn:"Universal", price:36, rating:4.8, reviews:875,
+     desc:"For long rigs or combined truck-and-trailer runs.",
+     specs:{"Length":"66 ft","Connector":"4-pin aviation M/F","Gauge":"22 AWG power","Jacket":"UV-resistant PVC"}}),
+  P({name:"Camera Extension Cable, 25 ft", brand:"Voyager", cat:"Cable", conn:"Wired", price:59, rating:4.8, reviews:166, fits:["Class A","Class C","Fifth Wheel","Toy Hauler"],
+     desc:"A genuine Voyager extension cable with sealed, locking connectors.",
+     specs:{"Length":"25 ft","Connector":"Voyager proprietary","Jacket":"Oil-resistant"}}),
+  P({name:"Camera Extension Cable, 50 ft", brand:"Voyager", cat:"Cable", conn:"Wired", price:79, rating:4.8, reviews:204, fits:["Class A","Class C","Fifth Wheel","Toy Hauler"],
+     desc:"A genuine Voyager 50 ft extension, long enough for most motorhomes.",
+     specs:{"Length":"50 ft","Connector":"Voyager proprietary","Jacket":"Oil-resistant"}}),
+  P({name:"Heavy-Duty Camera Cable, 65 ft", brand:"Rear View Safety", cat:"Cable", conn:"Wired", price:45, rating:4.6, reviews:420,
+     desc:"A thick-jacketed 4-pin cable built for commercial use.",
+     specs:{"Length":"65 ft","Connector":"4-pin aviation","Jacket":"Heavy-duty PVC"}}),
+  P({name:"RCA Video + Power Extension Cable, 33 ft", brand:"BW Pro", cat:"Cable", conn:"Universal", price:19, rating:4.4, reviews:690,
+     desc:"A combined RCA video and DC power cable for older monitors and aftermarket head units.",
+     specs:{"Length":"33 ft","Connector":"RCA + DC barrel","Use":"Head units, older monitors"}}),
+  P({name:"4-Pin to RCA Adapter Pigtail", brand:"BW Pro", cat:"Cable", conn:"Universal", price:9, rating:4.6, reviews:1540,
+     desc:"Connects a 4-pin camera to an RCA video input, such as an aftermarket stereo or older monitor, and breaks out a power lead.",
+     specs:{"Connector":"4-pin F → RCA M + power leads","Length":"12 in"}}),
+  P({name:"Prewire Harness Extension, 20 ft", brand:"BW Pro", cat:"Cable", conn:"Prewire", price:24, rating:4.4, reviews:233, fits:TOWABLES,
+     desc:"Extends the 12V power feed for a prewire camera mount when the factory lead is too short or damaged.",
+     specs:{"Length":"20 ft","Gauge":"18 AWG","Ends":"Weatherproof butt connectors"}}),
+  P({name:"7-Way Trailer Camera Power Tap", brand:"BW Pro", cat:"Cable", conn:"Universal", price:24, rating:4.5, reviews:512, fits:TOWABLES,
+     desc:"Takes running-light or reverse power from the 7-way plug for trailer cameras, with no splicing into the trailer wiring.",
+     specs:{"Connector":"7-way RV blade pass-through","Output":"12V running + reverse leads","Fuse":"Inline 3A"}}),
+
+  // ---- Mounts
+  P({name:"Vision S Rear Camera Mounting Bracket", brand:"Furrion", cat:"Mount", conn:"Prewire", price:29, rating:4.5, reviews:620, fits:TOWABLES,
+     desc:"The factory-style \"shark fin\" bracket for adding Vision S prewire to an RV that doesn't have it.",
+     specs:{"Material":"UV-stabilized ABS","Includes":"Gasket, screws, power pigtail"}}),
+  P({name:"Marker Light Camera Mount Plate", brand:"BW Pro", cat:"Mount", conn:"Universal", price:19, rating:4.4, reviews:380,
+     desc:"Mounts a standard bracket camera in a marker-light opening, using the light's existing wiring hole.",
+     specs:{"Material":"Powder-coated aluminum","Fits":"Most 2\"×4\" marker lights"}}),
+  P({name:"Universal Ladder Camera Mount", brand:"BW Pro", cat:"Mount", conn:"Universal", price:24, rating:4.3, reviews:255, fits:["Travel Trailer","Fifth Wheel","Toy Hauler","Class A","Class C"],
+     desc:"Clamps to a rear RV ladder so you can mount a camera without drilling.",
+     specs:{"Fits":"1\"–1.5\" ladder rails","Material":"Stainless hardware"}}),
+  P({name:"Dash Monitor Suction Mount (Heavy-Duty)", brand:"BW Pro", cat:"Mount", conn:"Universal", price:19, rating:4.2, reviews:1030,
+     desc:"A locking suction mount with a ball joint that holds 5\"–10\" monitors steady on rough roads.",
+     specs:{"Fits":"5\"–10\" monitors","Base":"Locking gel suction"}}),
+
+  // ---- Power & Parts
+  P({name:"12V Hardwire Kit w/ Inline Fuse", brand:"BW Pro", cat:"Power & Parts", conn:"Universal", price:15, rating:4.6, reviews:870,
+     desc:"Hardwires the monitor to switched 12V so you don't need the cigarette-lighter plug.",
+     specs:{"Includes":"Add-a-fuse tap (ATO/ATC + mini), 10 ft lead, ground ring","Fuse":"2A"}}),
+  P({name:"Wireless Signal Booster Antenna", brand:"BW Pro", cat:"Power & Parts", conn:"Wireless", price:29, rating:4.2, reviews:640, fits:["Fifth Wheel","Toy Hauler","Class A"],
+     desc:"A high-gain antenna for wireless monitors that helps with signal drops on long rigs (35 ft and up).",
+     specs:{"Gain":"5 dBi","Band":"2.4 GHz","Cable":"10 ft SMA"}}),
+  P({name:"4-Channel Camera DVR Recorder", brand:"BW Pro", cat:"Power & Parts", conn:"Wired", price:119, rating:4.3, reviews:218,
+     desc:"Records up to four 4-pin cameras to SD card with loop recording and saves clips automatically when it detects an impact.",
+     specs:{"Inputs":"4 × 4-pin","Storage":"SD up to 256 GB","Power":"12–24V"}}),
+  P({name:"Weatherproof Cable Grommet Pack (6)", brand:"BW Pro", cat:"Power & Parts", conn:"Universal", price:8, rating:4.7, reviews:445,
+     desc:"Seals cable holes through RV walls and roofs. Use with lap sealant.",
+     specs:{"Qty":"6","Fits":"Cables 3–8 mm","Material":"EPDM rubber"}}),
+  P({name:"Camera Lens Care Kit", brand:"BW Pro", cat:"Power & Parts", conn:"Universal", price:9, rating:4.5, reviews:300,
+     desc:"Hydrophobic lens coating and a microfiber cloth that help keep rain spots and road grime off your camera.",
+     specs:{"Includes":"Coating spray, 2 microfiber cloths"}}),
+  P({name:"Video Ground Loop Isolator", brand:"BW Pro", cat:"Power & Parts", conn:"Universal", price:12, rating:4.3, reviews:190,
+     desc:"Removes rolling lines and flicker caused by ground noise on wired camera runs.",
+     specs:{"Connector":"RCA in/out","Use":"Wired 4-pin or RCA runs"}})
+];
+
+const CATS = [
+  {k:"Camera System", label:"Camera Systems", sub:"Complete kits"},
+  {k:"Camera", label:"Add-On Cameras", sub:"Rear & side"},
+  {k:"Monitor", label:"Monitors", sub:"5\" to 10\""},
+  {k:"Cable", label:"Cables & Adapters", sub:"4-pin, RCA, 7-way"},
+  {k:"Mount", label:"Mounts", sub:"Brackets & clamps"},
+  {k:"Power & Parts", label:"Power & Parts", sub:"Fuses, DVRs, more"}
+];
+const CONNS = ["Wireless","Wired","Prewire","Universal"];
+
+const CONNECTORS = [
+  {n:"4-Pin Aviation (GX12 style)", where:"Most aftermarket wired cameras and monitors", carries:"Video, 12V power, ground, audio/trigger", brands:"Rear View Safety, Echomaster, eRapta, BW Pro", buy:"BW Pro 4-pin extensions (10–66 ft)"},
+  {n:"Furrion Vision S Prewire", where:"\"Shark fin\" bracket on the rear cap of many factory-built trailers and fifth wheels", carries:"12V power only (video is wireless)", brands:"Furrion", buy:"Vision S camera + monitor kit; Prewire Harness Extension if the lead is damaged"},
+  {n:"Voyager Proprietary", where:"Class A coaches and commercial vehicles with Voyager systems", carries:"Video, power, audio, shutter/heater control", brands:"Voyager (ASA Electronics)", buy:"Genuine Voyager extension cables only; 4-pin adapters won't run the shutter or heater"},
+  {n:"RCA Composite + DC", where:"Older monitors, aftermarket stereos and head units", carries:"Video (yellow RCA) plus a separate DC power lead", brands:"Older OEM, budget kits", buy:"RCA Video + Power cable, or a 4-pin to RCA adapter"},
+  {n:"7-Way RV Blade", where:"Truck-to-trailer connection", carries:"Running lights, reverse, 12V aux, brakes, turn signals", brands:"All towables", buy:"7-Way Camera Power Tap for no-splice camera power"},
+  {n:"SMA Antenna", where:"Back of wireless monitors and some wireless cameras", carries:"2.4 GHz wireless signal", brands:"Haloview, AMTIFO, Yakry", buy:"Wireless Signal Booster Antenna for long rigs"}
+];
+
+const FAQ = [
+  ["How do I know if my RV is prewired for a camera?","Check the rear cap, usually top center above the rear window or license plate. A small plastic \"shark fin\" bracket or cover plate usually means it's Furrion Vision S prewired. Many prewired rigs also have a sticker inside a front cabinet. Send us a photo if you're not sure."],
+  ["Wired or wireless: which is better?","Wired systems have a perfect, lag-free picture and never drop signal, but you have to run a cable the length of the rig. Wireless is much easier to install, and today's digital systems are very reliable up to about 40 ft. On bigger rigs, add a signal booster antenna."],
+  ["What length cable do I need?","Measure from the camera location to the dash, following the path you'll actually route the wire, and add 15–20%. For a truck pulling a trailer, add the truck length plus slack for the hitch."],
+  ["Can I mix brands?","Cameras and monitors that both use 4-pin aviation connectors usually work together. Furrion Vision S, Garmin BC 50, and Voyager systems only work with their own brand. Our wiring guide above shows what's compatible."],
+  ["What does the Fits-Your-Rig Guarantee cover?","If you used our Camera Finder or talked to our team, and the product doesn't fit or connect to your RV, we'll cover return shipping and help you swap it for the right part."],
+  ["Do you offer installation?","Yes. Our partner installer network covers most of the U.S. Use the contact form with your ZIP code and RV model and we'll set it up."]
+];
+
+/* =========================================================
+   PRODUCT ART (inline SVG per category, tinted by brand)
+   ========================================================= */
+const brandColor = b => (BRANDS.find(x=>x.name===b)||{}).color || "#0f2238";
+function art(cat, color){
+  const c = color || "#0f2238";
+  switch(cat){
+    case "Camera": return `<svg viewBox="0 0 120 100"><rect x="20" y="28" width="70" height="46" rx="10" fill="${c}"/><rect x="26" y="20" width="58" height="12" rx="4" fill="#33475e"/><circle cx="55" cy="51" r="17" fill="#1b2533"/><circle cx="55" cy="51" r="10" fill="#2f6aa8"/><circle cx="51" cy="47" r="3" fill="#bfe0ff"/>${[0,1,2,3].map(i=>`<circle cx="${30+i*0}" cy="${36+i*8}" r="2" fill="#ff5b5b" opacity=".8"/>`).join("")}<rect x="48" y="74" width="14" height="14" fill="#33475e"/><rect x="34" y="86" width="42" height="6" rx="3" fill="#33475e"/></svg>`;
+    case "Monitor": return `<svg viewBox="0 0 120 100"><rect x="10" y="12" width="100" height="64" rx="6" fill="#1b2533"/><rect x="16" y="18" width="88" height="52" rx="2" fill="#2f6aa8"/><path d="M16 70 L50 38 L72 58 L84 48 L104 70 Z" fill="#244f80"/><rect x="16" y="18" width="88" height="5" fill="${c}"/><rect x="54" y="76" width="12" height="10" fill="#33475e"/><rect x="36" y="86" width="48" height="6" rx="3" fill="#33475e"/></svg>`;
+    case "Cable": return `<svg viewBox="0 0 120 100"><path d="M24 30 C70 10, 90 50, 50 58 S 30 90, 96 76" fill="none" stroke="${c}" stroke-width="7" stroke-linecap="round"/><rect x="8" y="22" width="22" height="16" rx="4" fill="#33475e"/><circle cx="12" cy="30" r="2" fill="#ccc"/><rect x="92" y="68" width="22" height="16" rx="4" fill="#33475e"/><circle cx="110" cy="76" r="2" fill="#ccc"/></svg>`;
+    case "Mount": return `<svg viewBox="0 0 120 100"><path d="M30 20 h60 v14 h-22 v40 h-16 v-40 h-22 z" fill="${c}"/><rect x="24" y="74" width="72" height="10" rx="3" fill="#33475e"/><circle cx="38" cy="79" r="2.5" fill="#ccc"/><circle cx="82" cy="79" r="2.5" fill="#ccc"/><circle cx="60" cy="27" r="3" fill="#fff" opacity=".6"/></svg>`;
+    case "Power & Parts": return `<svg viewBox="0 0 120 100"><rect x="22" y="22" width="76" height="56" rx="10" fill="#e9eef4" stroke="${c}" stroke-width="5"/><path d="M64 30 L46 54 H60 L54 72 L76 46 H62 Z" fill="${c}"/></svg>`;
+    default: return `<svg viewBox="0 0 120 100"><rect x="6" y="14" width="74" height="50" rx="5" fill="#1b2533"/><rect x="11" y="19" width="64" height="40" rx="2" fill="#2f6aa8"/><rect x="11" y="19" width="64" height="4" fill="${c}"/><path d="M11 59 L36 36 L52 50 L60 44 L75 59Z" fill="#244f80"/><rect x="38" y="64" width="10" height="8" fill="#33475e"/><rect x="28" y="72" width="30" height="5" rx="2.5" fill="#33475e"/><rect x="72" y="52" width="40" height="28" rx="6" fill="${c}"/><circle cx="92" cy="66" r="10" fill="#1b2533"/><circle cx="92" cy="66" r="6" fill="#2f6aa8"/><circle cx="90" cy="64" r="2" fill="#bfe0ff"/></svg>`;
+  }
+}
+
+/* =========================================================
+   HELPERS
+   ========================================================= */
+const $ = s => document.querySelector(s);
+const money = n => "$" + n.toFixed(2).replace(/\.00$/,"");
+const stars = r => "★".repeat(Math.round(r)) + "☆".repeat(5-Math.round(r));
+const esc = s => String(s).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const byId = id => PRODUCTS.find(p=>p.id===id);
+function toast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("show");clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove("show"),2000);}
+const store = {
+  get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch(e){return d;}},
+  set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+};
+
+/* =========================================================
+   STATE
+   ========================================================= */
+const state = {q:"", cats:new Set(), conns:new Set(), brand:"", rig:"", max:900, night:false, sort:"featured", compare:[]};
+let cart = store.get("bwcams_cart", []);
+
+/* =========================================================
+   RENDER: static pieces
+   ========================================================= */
+$("#statProducts").textContent = PRODUCTS.length;
+$("#statBrands").textContent = BRANDS.length;
+$("#yr").textContent = new Date().getFullYear();
+
+$("#cats").innerHTML = CATS.map(c=>`<a href="#shop" class="cat" data-cat="${c.k}">${art(c.k,"#f26b1d")}<b>${c.label}</b><span>${PRODUCTS.filter(p=>p.cat===c.k).length} products · ${c.sub}</span></a>`).join("");
+
+$("#fCat").innerHTML = CATS.map(c=>`<label class="chk"><input type="checkbox" value="${c.k}" data-f="cat"> ${c.label}<em>${PRODUCTS.filter(p=>p.cat===c.k).length}</em></label>`).join("");
+$("#fConn").innerHTML = CONNS.map(c=>`<label class="chk"><input type="checkbox" value="${c}" data-f="conn"> ${c}<em>${PRODUCTS.filter(p=>p.conn===c).length}</em></label>`).join("");
+$("#fBrand").innerHTML += BRANDS.map(b=>`<option>${b.name}</option>`).join("");
+$("#fRig").innerHTML += ALL.map(r=>`<option>${r}</option>`).join("");
+
+$("#brandGrid").innerHTML = BRANDS.map(b=>{
+  const n = PRODUCTS.filter(p=>p.brand===b.name).length;
+  const initials = b.name.split(/[\s-]/).map(w=>w[0]).join("").slice(0,2).toUpperCase();
+  return `<div class="brand-card"><div class="top"><div class="brand-logo" style="background:${b.color}">${initials}</div><div><h4>${b.name}</h4><div class="hq">${b.hq}</div></div></div><p>${b.about}</p><div class="tags">${b.known.map(k=>`<span class="tag">${k}</span>`).join("")}</div><button class="link" data-brand="${b.name}">Shop ${n} ${b.name} products →</button></div>`;
+}).join("");
+
+$("#connTable").innerHTML = CONNECTORS.map(c=>`<tr><td><b>${c.n}</b></td><td>${c.where}</td><td>${c.carries}</td><td>${c.brands}</td><td>${c.buy}</td></tr>`).join("");
+
+$("#faq").innerHTML = FAQ.map(([q,a],i)=>`<details ${i===0?"open":""}><summary>${q}</summary><p>${a}</p></details>`).join("");
+
+/* =========================================================
+   RENDER: catalog
+   ========================================================= */
+function filtered(){
+  const q = state.q.trim().toLowerCase();
+  let list = PRODUCTS.filter(p=>{
+    if(state.cats.size && !state.cats.has(p.cat)) return false;
+    if(state.conns.size && !state.conns.has(p.conn)) return false;
+    if(state.brand && p.brand!==state.brand) return false;
+    if(state.rig && !p.fits.includes(state.rig)) return false;
+    if(p.price>state.max) return false;
+    if(state.night && !p.night) return false;
+    if(q){
+      const hay = [p.name,p.brand,p.sku,p.cat,p.conn,p.desc,...Object.values(p.specs)].join(" ").toLowerCase();
+      if(!q.split(/\s+/).every(w=>hay.includes(w))) return false;
+    }
+    return true;
+  });
+  const s = state.sort;
+  list.sort((a,b)=> s==="price-asc"?a.price-b.price : s==="price-desc"?b.price-a.price : s==="rating"?(b.rating-a.rating)||(b.reviews-a.reviews) : s==="name"?a.name.localeCompare(b.name) : (b.featured-a.featured)||(b.reviews-a.reviews));
+  return list;
+}
+function card(p){
+  const checked = state.compare.includes(p.id)?"checked":"";
+  return `<div class="card">
+    <div class="img" data-open="${p.id}">${art(p.cat,brandColor(p.brand))}<span class="badge b-${p.conn.toLowerCase()}">${p.conn}</span></div>
+    <div class="body">
+      <span class="brand">${p.brand}</span>
+      <h4 data-open="${p.id}">${esc(p.name)}</h4>
+      <div class="stars">${stars(p.rating)}<em>${p.rating} (${p.reviews.toLocaleString()})</em></div>
+      <span class="sku">SKU ${p.sku} · ${p.cat}</span>
+      <label class="cmp"><input type="checkbox" data-cmp="${p.id}" ${checked}> Compare</label>
+      <div class="bottom"><span class="price">${money(p.price)}</span><button class="add" data-add="${p.id}">Add to Cart</button></div>
+    </div></div>`;
+}
+function renderGrid(){
+  const list = filtered();
+  $("#count").textContent = `Showing ${list.length} of ${PRODUCTS.length} products`;
+  $("#grid").innerHTML = list.length ? list.map(card).join("") : `<div class="empty"><b>No products match those filters.</b><br>Try removing a filter, or <a href="#support" style="color:var(--orange);font-weight:700">ask a specialist</a>.</div>`;
+}
+function syncFilterUI(){
+  document.querySelectorAll('[data-f="cat"]').forEach(i=>i.checked=state.cats.has(i.value));
+  document.querySelectorAll('[data-f="conn"]').forEach(i=>i.checked=state.conns.has(i.value));
+  $("#fBrand").value=state.brand; $("#fRig").value=state.rig; $("#fPrice").value=state.max;
+  $("#fPriceVal").textContent="$"+state.max; $("#fNight").checked=state.night; $("#q").value=state.q; $("#sort").value=state.sort;
+}
+function resetFilters(){state.q="";state.cats.clear();state.conns.clear();state.brand="";state.rig="";state.max=900;state.night=false;}
+
+/* Filter events */
+document.addEventListener("change", e=>{
+  const t=e.target;
+  if(t.dataset.f==="cat"){t.checked?state.cats.add(t.value):state.cats.delete(t.value);renderGrid();}
+  if(t.dataset.f==="conn"){t.checked?state.conns.add(t.value):state.conns.delete(t.value);renderGrid();}
+  if(t.dataset.cmp){toggleCompare(+t.dataset.cmp,t);}
+});
+$("#fBrand").onchange=e=>{state.brand=e.target.value;renderGrid();};
+$("#fRig").onchange=e=>{state.rig=e.target.value;renderGrid();};
+$("#fPrice").oninput=e=>{state.max=+e.target.value;$("#fPriceVal").textContent="$"+state.max;renderGrid();};
+$("#fNight").onchange=e=>{state.night=e.target.checked;renderGrid();};
+$("#q").oninput=e=>{state.q=e.target.value;renderGrid();};
+$("#sort").onchange=e=>{state.sort=e.target.value;renderGrid();};
+$("#clearFilters").onclick=()=>{resetFilters();syncFilterUI();renderGrid();};
+
+/* Category / brand jump links */
+document.addEventListener("click", e=>{
+  const catLink = e.target.closest("[data-cat]");
+  if(catLink){resetFilters();state.cats.add(catLink.dataset.cat);syncFilterUI();renderGrid();}
+  const brandLink = e.target.closest("[data-brand]");
+  if(brandLink){resetFilters();state.brand=brandLink.dataset.brand;syncFilterUI();renderGrid();$("#shop").scrollIntoView();}
+  const open = e.target.closest("[data-open]");
+  if(open) openProduct(+open.dataset.open);
+  const add = e.target.closest("[data-add]");
+  if(add) addToCart(+add.dataset.add);
+});
+
+/* =========================================================
+   PRODUCT DETAIL MODAL
+   ========================================================= */
+function related(p){
+  // Suggest compatible parts: same brand first, then universal parts that match the connection type
+  const pool = PRODUCTS.filter(x=>x.id!==p.id && x.cat!==p.cat && (x.brand===p.brand || (x.brand==="BW Pro" && (x.conn===p.conn || x.conn==="Universal"))));
+  if(p.conn==="Wireless") pool.sort((a,b)=>(b.name.includes("Booster")?1:0)-(a.name.includes("Booster")?1:0));
+  return pool.slice(0,4);
+}
+function openProduct(id){
+  const p=byId(id); if(!p) return;
+  const rel = related(p);
+  $("#modalContent").innerHTML = `
+    <div class="pd">
+      <div class="img">${art(p.cat,brandColor(p.brand))}<span class="badge b-${p.conn.toLowerCase()}">${p.conn}</span></div>
+      <div>
+        <span class="brand" style="font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--orange)">${p.brand}</span>
+        <h3>${esc(p.name)}</h3>
+        <div class="stars">${stars(p.rating)}<em>${p.rating} · ${p.reviews.toLocaleString()} reviews</em></div>
+        <p class="desc">${esc(p.desc)}</p>
+        <table class="spec"><tbody>
+          <tr><td>SKU</td><td>${p.sku}</td></tr>
+          <tr><td>Category</td><td>${p.cat}</td></tr>
+          <tr><td>Connection</td><td>${p.conn}</td></tr>
+          ${Object.entries(p.specs).map(([k,v])=>`<tr><td>${k}</td><td>${esc(v)}</td></tr>`).join("")}
+        </tbody></table>
+        <b style="font-size:.85rem">Fits:</b>
+        <div class="fits">${p.fits.map(f=>`<span class="tag">${f}</span>`).join("")}</div>
+        <div class="instock">● In stock, ships within 1 business day</div>
+        <div class="actions"><span class="price" style="font-size:1.6rem">${money(p.price)}</span><button class="btn btn-primary" data-add="${p.id}">Add to Cart</button></div>
+      </div>
+    </div>
+    ${rel.length?`<div class="related"><h4>Compatible parts &amp; accessories</h4><div class="list">${rel.map(r=>`<div class="rel" data-open="${r.id}">${art(r.cat,brandColor(r.brand))}<div><b>${esc(r.name)}</b><br>${money(r.price)}</div></div>`).join("")}</div></div>`:""}`;
+  showModal();
+}
+function showModal(){$("#modal").classList.add("show");$("#overlay").classList.add("show");$("#modal").scrollTop=0;}
+function hideAll(){["#modal","#drawer","#overlay"].forEach(s=>$(s).classList.remove("show"));}
+$("#closeModal").onclick=hideAll;
+$("#overlay").onclick=hideAll;
+document.addEventListener("keydown",e=>{if(e.key==="Escape")hideAll();});
+
+/* =========================================================
+   COMPARE
+   ========================================================= */
+function toggleCompare(id, input){
+  const i = state.compare.indexOf(id);
+  if(i>-1) state.compare.splice(i,1);
+  else if(state.compare.length>=3){input.checked=false;toast("You can compare up to 3 items");return;}
+  else state.compare.push(id);
+  renderTray();
+}
+function renderTray(){
+  const n = state.compare.length;
+  $("#cmpTray").classList.toggle("show", n>0);
+  $("#cmpNames").textContent = n ? `Comparing ${n}/3: ` + state.compare.map(id=>byId(id).brand).join(", ") : "";
+}
+$("#cmpClear").onclick=()=>{state.compare=[];renderTray();renderGrid();};
+$("#cmpGo").onclick=()=>{
+  if(state.compare.length<2){toast("Pick at least 2 items to compare");return;}
+  const items = state.compare.map(byId);
+  const keys = [...new Set(items.flatMap(p=>Object.keys(p.specs)))];
+  const row = (label, fn) => `<tr><th>${label}</th>${items.map(p=>`<td>${fn(p)}</td>`).join("")}</tr>`;
+  $("#modalContent").innerHTML = `<h3 style="margin-bottom:16px">Compare Products</h3><div class="table-wrap"><table class="cmp-table"><tbody>
+    <tr><th></th>${items.map(p=>`<td style="text-align:center"><div style="width:90px;margin:0 auto">${art(p.cat,brandColor(p.brand))}</div><b style="display:block;margin-top:6px">${esc(p.name)}</b></td>`).join("")}</tr>
+    ${row("Brand",p=>p.brand)}${row("Price",p=>`<b>${money(p.price)}</b>`)}${row("Rating",p=>`${p.rating} ★ (${p.reviews.toLocaleString()})`)}
+    ${row("Category",p=>p.cat)}${row("Connection",p=>p.conn)}${row("Night Vision",p=>p.night?"Yes":"—")}
+    ${keys.map(k=>row(k,p=>esc(p.specs[k]||"—"))).join("")}
+    ${row("Fits",p=>p.fits.join(", "))}
+    ${row("",p=>`<button class="add" data-add="${p.id}">Add to Cart</button>`)}
+  </tbody></table></div>`;
+  showModal();
+};
+
+/* =========================================================
+   CAMERA FINDER
+   ========================================================= */
+const QUIZ = {
+  rig:{opts:ALL, def:"Travel Trailer"},
+  prewire:{opts:["Yes","No","Not sure"], def:"Not sure"},
+  conn:{opts:["Wireless","Wired","No preference"], def:"No preference"},
+  budget:{opts:["Under $200","$200–$500","$500+","Any"], def:"Any"}
+};
+document.querySelectorAll(".opts").forEach(box=>{
+  const k = box.dataset.q, q = QUIZ[k];
+  box.innerHTML = q.opts.map(o=>`<label class="opt"><input type="radio" name="q_${k}" value="${o}" ${o===q.def?"checked":""}><span>${o}</span></label>`).join("");
+});
+$("#findBtn").onclick=()=>{
+  const a = k => document.querySelector(`input[name=q_${k}]:checked`).value;
+  const rig=a("rig"), pre=a("prewire"), conn=a("conn"), budget=a("budget");
+  const [lo,hi] = {"Under $200":[0,199],"$200–$500":[200,500],"$500+":[500,9999],"Any":[0,9999]}[budget];
+  let list = PRODUCTS.filter(p=>p.cat==="Camera System" && p.fits.includes(rig) && p.price>=lo && p.price<=hi);
+  if(pre==="No") list = list.filter(p=>p.conn!=="Prewire");
+  if(conn==="Wired") list = list.filter(p=>p.conn==="Wired");
+  if(conn==="Wireless") list = list.filter(p=>p.conn==="Wireless"||p.conn==="Prewire");
+  const score = p => {
+    let s = p.rating*10 + Math.log10(p.reviews);
+    if(pre==="Yes" && p.conn==="Prewire") s+=40;
+    if(MOTOR.includes(rig) && p.conn==="Wired") s+=8;
+    if(["Fifth Wheel","Class A"].includes(rig) && p.specs["Cameras Included"]) s+=5;
+    return s;
+  };
+  list.sort((x,y)=>score(y)-score(x));
+  const why = p => {
+    if(pre==="Yes" && p.conn==="Prewire") return "Snaps right into your factory prewire, with no wires to run";
+    if(p.conn==="Wired") return "Wired connection: lag-free picture that won't drop out";
+    if(p.specs.Power && /Solar|battery/i.test(p.specs.Power)) return "No wiring at all, mounts in minutes";
+    if(p.specs.Mount==="Magnetic") return "Portable and magnetic, moves between hitch and rear";
+    return "Wireless and easy to install, a great fit for a " + rig.toLowerCase();
+  };
+  const top = list.slice(0,3);
+  $("#finderResults").innerHTML = top.length
+    ? `<b style="font-size:.9rem;color:#9fb3c8">Top matches for your ${rig}:</b>` + top.map(p=>`<div class="fr">${art(p.cat,brandColor(p.brand))}<div class="info"><b>${p.brand} ${esc(p.name)}</b><span>${stars(p.rating)} ${p.rating}</span><span class="why">✓ ${why(p)}</span></div><div style="text-align:right"><div class="p">${money(p.price)}</div><button class="add" data-add="${p.id}" style="margin-top:4px">Add</button> <button class="add" data-open="${p.id}" style="margin-top:4px;background:#3a5878">View</button></div></div>`).join("")
+      + (pre==="Not sure"?`<div style="font-size:.82rem;color:#b8c8d8">Not sure about prewire? See the tip on the left, or <a href="#support" style="color:#ffb185;font-weight:700">send us a photo</a>.</div>`:"")
+    : `<div class="fr"><div class="info"><b>No exact match in that budget.</b><span>Try "Any" budget or "No preference," or <a href="#support" style="color:#ffb185">ask a specialist</a>.</span></div></div>`;
+};
+
+/* =========================================================
+   CART
+   ========================================================= */
+function saveCart(){store.set("bwcams_cart",cart);renderCart();}
+function addToCart(id){
+  const line = cart.find(l=>l.id===id);
+  line ? line.qty++ : cart.push({id,qty:1});
+  saveCart(); toast("✓ Added to cart");
+}
+function renderCart(){
+  cart = cart.filter(l=>byId(l.id));
+  const count = cart.reduce((s,l)=>s+l.qty,0);
+  $("#cartCount").textContent = count;
+  if(!cart.length){
+    $("#cartBody").innerHTML = `<div style="text-align:center;padding:48px 10px;color:var(--muted)"><div style="font-size:2.5rem">🛒</div><p style="margin:8px 0 16px">Your cart is empty.</p><a href="#finder" class="btn btn-primary" onclick="hideAll()">Find My Camera</a></div>`;
+    $("#cartFoot").innerHTML = ""; return;
+  }
+  $("#cartBody").innerHTML = cart.map(l=>{const p=byId(l.id);return `<div class="ci">${art(p.cat,brandColor(p.brand))}<div class="n"><b>${esc(p.name)}</b><span>${p.brand} · ${p.sku}</span><div class="qty"><button data-dec="${p.id}">−</button><span>${l.qty}</span><button data-inc="${p.id}">+</button><button class="rm" data-rm="${p.id}">Remove</button></div></div><div class="lp">${money(p.price*l.qty)}</div></div>`;}).join("");
+  const sub = cart.reduce((s,l)=>s+byId(l.id).price*l.qty,0);
+  const ship = sub>=99?0:9.95;
+  const tax = sub*0.07;
+  $("#cartFoot").innerHTML = `${sub<99?`<div class="ship-note" style="color:var(--orange-d)">Add ${money(99-sub)} more for free shipping</div>`:`<div class="ship-note">✓ You've got free shipping</div>`}
+    <div class="sumrow"><span>Subtotal</span><span>${money(sub)}</span></div>
+    <div class="sumrow"><span>Shipping</span><span>${ship?money(ship):"FREE"}</span></div>
+    <div class="sumrow"><span>Est. Tax (7%)</span><span>${money(tax)}</span></div>
+    <div class="sumrow total"><span>Total</span><span>${money(sub+ship+tax)}</span></div>
+    <button class="btn btn-primary" style="width:100%" id="checkoutBtn">Checkout</button>`;
+}
+$("#cartBody").addEventListener("click",e=>{
+  const t=e.target, id=+(t.dataset.inc||t.dataset.dec||t.dataset.rm);
+  if(!id) return;
+  const l=cart.find(x=>x.id===id);
+  if(t.dataset.inc) l.qty++;
+  if(t.dataset.dec) l.qty--;
+  if(t.dataset.rm||l.qty<1) cart=cart.filter(x=>x.id!==id);
+  saveCart();
+});
+$("#cartFoot").addEventListener("click",e=>{
+  if(e.target.id!=="checkoutBtn") return;
+  const sub = cart.reduce((s,l)=>s+byId(l.id).price*l.qty,0);
+  $("#modalContent").innerHTML = `<h3 style="margin-bottom:6px">Checkout</h3><p style="color:var(--muted);margin-bottom:16px">${cart.reduce((s,l)=>s+l.qty,0)} item(s) · Subtotal ${money(sub)}</p>
+    <form id="coForm">
+      <div class="form-row"><label>Full Name</label><input required></div>
+      <div class="form-row"><label>Email</label><input type="email" required></div>
+      <div class="form-row"><label>Shipping Address</label><input required></div>
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px"><div class="form-row"><label>City</label><input required></div><div class="form-row"><label>State</label><input required maxlength="2"></div><div class="form-row"><label>ZIP</label><input required></div></div>
+      <div class="form-row"><label>RV Year / Make / Model (for fit check)</label><input placeholder="Optional but recommended"></div>
+      <p style="font-size:.82rem;color:var(--muted);margin:6px 0 14px">Our team checks every order for fit before it ships. We'll email a secure payment link once your order has been confirmed.</p>
+      <button class="btn btn-primary" style="width:100%">Place Order</button>
+    </form>`;
+  $("#drawer").classList.remove("show"); showModal();
+  $("#coForm").onsubmit = ev=>{
+    ev.preventDefault();
+    const num = "BW" + Date.now().toString().slice(-7);
+    cart=[]; saveCart();
+    $("#modalContent").innerHTML = `<div class="confirm"><div class="big">✅</div><h3>Order received!</h3><p>Order <b>#${num}</b>. A BW specialist will check it for fit and email your payment link and tracking info.</p><button class="btn btn-dark" style="margin-top:18px" onclick="hideAll()">Continue Shopping</button></div>`;
+  };
+});
+$("#cartBtn").onclick=()=>{$("#drawer").classList.add("show");$("#overlay").classList.add("show");};
+$("#closeCart").onclick=hideAll;
+
+/* =========================================================
+   MISC
+   ========================================================= */
+$("#menuToggle").onclick=()=>$("#navlinks").classList.toggle("open");
+document.querySelectorAll("#navlinks a").forEach(a=>a.onclick=()=>$("#navlinks").classList.remove("open"));
+$("#contactForm").onsubmit=e=>{e.preventDefault();e.target.reset();toast("✓ Message sent, we'll reply within 1 business day");};
+$("#newsForm").onsubmit=e=>{e.preventDefault();e.target.reset();toast("✓ You're on the list!");};
+
+renderGrid();
+renderCart();
+</script>
+</body>
+</html>
