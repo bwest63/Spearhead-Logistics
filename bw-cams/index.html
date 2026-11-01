@@ -145,13 +145,17 @@ input[type=range]{width:100%;accent-color:var(--orange)}
 .brands{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
 .brand-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px;display:flex;flex-direction:column;gap:8px}
 .brand-card .top{display:flex;align-items:center;gap:12px}
-.brand-logo{width:46px;height:46px;border-radius:10px;display:grid;place-items:center;color:#fff;font-weight:800;font-size:1.1rem;flex:none}
+.brand-logo{position:relative;overflow:hidden;width:56px;height:56px;border-radius:10px;display:grid;place-items:center;color:#fff;font-weight:800;font-size:1.1rem;flex:none}
 .brand-card h4{font-size:1.05rem}
 .brand-card .hq{font-size:.8rem;color:var(--muted)}
 .brand-card p{font-size:.88rem;color:#3c4a5a}
 .tags{display:flex;flex-wrap:wrap;gap:6px}
 .tag{font-size:.72rem;background:#eef2f6;padding:3px 8px;border-radius:6px;font-weight:600;color:#3c4a5a}
 .brand-card .link{margin-top:auto;font-weight:700;color:var(--orange);font-size:.88rem;padding-top:6px;text-align:left}
+
+/* Real photos: hide the drawing once a photo loads */
+svg.has-photo > :not(image){display:none}
+.brand-logo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;padding:4px}
 
 /* Systems index */
 .sys-jump{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
@@ -832,6 +836,35 @@ const FAQ = [
    PRODUCT ART (inline SVG per category, tinted by brand)
    ========================================================= */
 const brandColor = b => (BRANDS.find(x=>x.name===b)||{}).color || "#0f2238";
+
+/* =========================================================
+   REAL PHOTOS
+   Product photos: put a file named after the product's SKU in
+   images/products/ (e.g. images/products/BW-1007.jpg or .png).
+   Brand logos: put a file in images/brands/ named after the brand
+   (e.g. images/brands/furrion.png or .jpg).
+   Or paste a full web address below to use an image hosted elsewhere.
+   If no photo is found, the drawing is shown instead.
+   ========================================================= */
+const PRODUCT_IMAGES = {
+  // "BW-1007": "https://example.com/vision-s-7in-system.jpg",
+};
+const BRAND_LOGOS = {
+  // "Furrion": "https://example.com/furrion-logo.png",
+};
+const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+const IMG_FALLBACK = "if(this.dataset.alt){var a=this.dataset.alt;this.dataset.alt='';this.setAttribute('href',a);this.setAttribute('src',a)}else{this.remove()}";
+function pic(p){
+  const src = PRODUCT_IMAGES[p.sku] || `images/products/${p.sku}.jpg`;
+  const alt = PRODUCT_IMAGES[p.sku] ? "" : `images/products/${p.sku}.png`;
+  const photo = `<image href="${src}" data-alt="${alt}" x="0" y="0" width="120" height="100" preserveAspectRatio="xMidYMid meet" onload="this.parentNode.classList.add('has-photo')" onerror="${IMG_FALLBACK}"><title>${esc(p.brand+" "+p.name)}</title></image>`;
+  return art(p.cat, brandColor(p.brand)).replace(/<\/svg>$/, photo + "</svg>");
+}
+function logoImg(b){
+  const src = BRAND_LOGOS[b.name] || `images/brands/${slug(b.name)}.png`;
+  const alt = BRAND_LOGOS[b.name] ? "" : `images/brands/${slug(b.name)}.jpg`;
+  return `<img src="${src}" data-alt="${alt}" alt="${esc(b.name)} logo" onerror="${IMG_FALLBACK}">`;
+}
 function art(cat, color){
   const c = color || "#0f2238";
   switch(cat){
@@ -881,7 +914,7 @@ $("#fRig").innerHTML += ALL.map(r=>`<option>${r}</option>`).join("");
 $("#brandGrid").innerHTML = BRANDS.map(b=>{
   const n = PRODUCTS.filter(p=>p.brand===b.name).length;
   const initials = b.name.split(/[\s-]/).map(w=>w[0]).join("").slice(0,2).toUpperCase();
-  return `<div class="brand-card"><div class="top"><div class="brand-logo" style="background:${b.color}">${initials}</div><div><h4>${b.name}</h4><div class="hq">${b.hq}</div></div></div><p>${b.about}</p><div class="tags">${b.known.map(k=>`<span class="tag">${k}</span>`).join("")}</div><button class="link" data-brand="${b.name}">Shop ${n} ${b.name} products →</button></div>`;
+  return `<div class="brand-card"><div class="top"><div class="brand-logo" style="background:${b.color}">${initials}${logoImg(b)}</div><div><h4>${b.name}</h4><div class="hq">${b.hq}</div></div></div><p>${b.about}</p><div class="tags">${b.known.map(k=>`<span class="tag">${k}</span>`).join("")}</div><button class="link" data-brand="${b.name}">Shop ${n} ${b.name} products →</button></div>`;
 }).join("");
 
 $("#connTable").innerHTML = CONNECTORS.map(c=>`<tr><td><b>${c.n}</b></td><td>${c.where}</td><td>${c.carries}</td><td>${c.brands}</td><td>${c.buy}</td></tr>`).join("");
@@ -898,7 +931,7 @@ $("#sysList").innerHTML = SYSTEMS.map(s=>{
   const groups = GROUPS.map(([cat,label])=>{
     const items = s.items.filter(p=>p.cat===cat).sort((a,b)=>(a.brand===s.brand?0:1)-(b.brand===s.brand?0:1)||a.price-b.price);
     if(!items.length) return "";
-    return `<div class="sys-group"><h5>${label} (${items.length})</h5>${items.map(p=>`<div class="sys-row">${art(p.cat,brandColor(p.brand))}<div class="nm" data-open="${p.id}">${p.brand==="BW Pro"?"BW Pro ":""}${esc(p.name)}<small>${p.sku} · ${p.conn}${p.brand!==s.brand&&p.brand!=="BW Pro"?" · "+p.brand:""}</small></div><span class="pr">${money(p.price)}</span><button class="add" data-add="${p.id}">Add</button></div>`).join("")}</div>`;
+    return `<div class="sys-group"><h5>${label} (${items.length})</h5>${items.map(p=>`<div class="sys-row">${pic(p)}<div class="nm" data-open="${p.id}">${p.brand==="BW Pro"?"BW Pro ":""}${esc(p.name)}<small>${p.sku} · ${p.conn}${p.brand!==s.brand&&p.brand!=="BW Pro"?" · "+p.brand:""}</small></div><span class="pr">${money(p.price)}</span><button class="add" data-add="${p.id}">Add</button></div>`).join("")}</div>`;
   }).join("");
   return `<article class="sys" id="sys-${s.key}">
     <div class="sys-head" style="border-left-color:${brandColor(s.brand)}">
@@ -946,7 +979,7 @@ function filtered(){
 function card(p){
   const checked = state.compare.includes(p.id)?"checked":"";
   return `<div class="card">
-    <div class="img" data-open="${p.id}">${art(p.cat,brandColor(p.brand))}<span class="badge b-${p.conn.toLowerCase()}">${p.conn}</span></div>
+    <div class="img" data-open="${p.id}">${pic(p)}<span class="badge b-${p.conn.toLowerCase()}">${p.conn}</span></div>
     <div class="body">
       <span class="brand">${p.brand}</span>
       <h4 data-open="${p.id}">${esc(p.name)}</h4>
@@ -1011,7 +1044,7 @@ function openProduct(id){
   const rel = related(p);
   $("#modalContent").innerHTML = `
     <div class="pd">
-      <div class="img">${art(p.cat,brandColor(p.brand))}<span class="badge b-${p.conn.toLowerCase()}">${p.conn}</span></div>
+      <div class="img">${pic(p)}<span class="badge b-${p.conn.toLowerCase()}">${p.conn}</span></div>
       <div>
         <span class="brand" style="font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--orange)">${p.brand}</span>
         <h3>${esc(p.name)}</h3>
@@ -1029,7 +1062,7 @@ function openProduct(id){
         <div class="actions"><span class="price" style="font-size:1.6rem">${money(p.price)}</span><button class="btn btn-primary" data-add="${p.id}">Add to Cart</button></div>
       </div>
     </div>
-    ${rel.length?`<div class="related"><h4>Compatible parts &amp; accessories</h4><div class="list">${rel.map(r=>`<div class="rel" data-open="${r.id}">${art(r.cat,brandColor(r.brand))}<div><b>${esc(r.name)}</b><br>${money(r.price)}</div></div>`).join("")}</div></div>`:""}`;
+    ${rel.length?`<div class="related"><h4>Compatible parts &amp; accessories</h4><div class="list">${rel.map(r=>`<div class="rel" data-open="${r.id}">${pic(r)}<div><b>${esc(r.name)}</b><br>${money(r.price)}</div></div>`).join("")}</div></div>`:""}`;
   showModal();
 }
 function showModal(){$("#modal").classList.add("show");$("#overlay").classList.add("show");$("#modal").scrollTop=0;}
@@ -1060,7 +1093,7 @@ $("#cmpGo").onclick=()=>{
   const keys = [...new Set(items.flatMap(p=>Object.keys(p.specs)))];
   const row = (label, fn) => `<tr><th>${label}</th>${items.map(p=>`<td>${fn(p)}</td>`).join("")}</tr>`;
   $("#modalContent").innerHTML = `<h3 style="margin-bottom:16px">Compare Products</h3><div class="table-wrap"><table class="cmp-table"><tbody>
-    <tr><th></th>${items.map(p=>`<td style="text-align:center"><div style="width:90px;margin:0 auto">${art(p.cat,brandColor(p.brand))}</div><b style="display:block;margin-top:6px">${esc(p.name)}</b></td>`).join("")}</tr>
+    <tr><th></th>${items.map(p=>`<td style="text-align:center"><div style="width:90px;margin:0 auto">${pic(p)}</div><b style="display:block;margin-top:6px">${esc(p.name)}</b></td>`).join("")}</tr>
     ${row("Brand",p=>p.brand)}${row("Price",p=>`<b>${money(p.price)}</b>`)}${row("Rating",p=>`${p.rating} ★ (${p.reviews.toLocaleString()})`)}
     ${row("Category",p=>p.cat)}${row("Connection",p=>p.conn)}${row("Night Vision",p=>p.night?"Yes":"—")}
     ${keys.map(k=>row(k,p=>esc(p.specs[k]||"—"))).join("")}
@@ -1108,7 +1141,7 @@ $("#findBtn").onclick=()=>{
   };
   const top = list.slice(0,3);
   $("#finderResults").innerHTML = top.length
-    ? `<b style="font-size:.9rem;color:#9fb3c8">Top matches for your ${rig}:</b>` + top.map(p=>`<div class="fr">${art(p.cat,brandColor(p.brand))}<div class="info"><b>${p.brand} ${esc(p.name)}</b><span>${stars(p.rating)} ${p.rating}</span><span class="why">✓ ${why(p)}</span></div><div style="text-align:right"><div class="p">${money(p.price)}</div><button class="add" data-add="${p.id}" style="margin-top:4px">Add</button> <button class="add" data-open="${p.id}" style="margin-top:4px;background:#3a5878">View</button></div></div>`).join("")
+    ? `<b style="font-size:.9rem;color:#9fb3c8">Top matches for your ${rig}:</b>` + top.map(p=>`<div class="fr">${pic(p)}<div class="info"><b>${p.brand} ${esc(p.name)}</b><span>${stars(p.rating)} ${p.rating}</span><span class="why">✓ ${why(p)}</span></div><div style="text-align:right"><div class="p">${money(p.price)}</div><button class="add" data-add="${p.id}" style="margin-top:4px">Add</button> <button class="add" data-open="${p.id}" style="margin-top:4px;background:#3a5878">View</button></div></div>`).join("")
       + (pre==="Not sure"?`<div style="font-size:.82rem;color:#b8c8d8">Not sure about prewire? See the tip on the left, or <a href="#support" style="color:#ffb185;font-weight:700">send us a photo</a>.</div>`:"")
     : `<div class="fr"><div class="info"><b>No exact match in that budget.</b><span>Try "Any" budget or "No preference," or <a href="#support" style="color:#ffb185">ask a specialist</a>.</span></div></div>`;
 };
@@ -1130,7 +1163,7 @@ function renderCart(){
     $("#cartBody").innerHTML = `<div style="text-align:center;padding:48px 10px;color:var(--muted)"><div style="font-size:2.5rem">🛒</div><p style="margin:8px 0 16px">Your cart is empty.</p><a href="#finder" class="btn btn-primary" onclick="hideAll()">Find My Camera</a></div>`;
     $("#cartFoot").innerHTML = ""; return;
   }
-  $("#cartBody").innerHTML = cart.map(l=>{const p=byId(l.id);return `<div class="ci">${art(p.cat,brandColor(p.brand))}<div class="n"><b>${esc(p.name)}</b><span>${p.brand} · ${p.sku}</span><div class="qty"><button data-dec="${p.id}">−</button><span>${l.qty}</span><button data-inc="${p.id}">+</button><button class="rm" data-rm="${p.id}">Remove</button></div></div><div class="lp">${money(p.price*l.qty)}</div></div>`;}).join("");
+  $("#cartBody").innerHTML = cart.map(l=>{const p=byId(l.id);return `<div class="ci">${pic(p)}<div class="n"><b>${esc(p.name)}</b><span>${p.brand} · ${p.sku}</span><div class="qty"><button data-dec="${p.id}">−</button><span>${l.qty}</span><button data-inc="${p.id}">+</button><button class="rm" data-rm="${p.id}">Remove</button></div></div><div class="lp">${money(p.price*l.qty)}</div></div>`;}).join("");
   const sub = cart.reduce((s,l)=>s+byId(l.id).price*l.qty,0);
   const ship = sub>=99?0:9.95;
   const tax = sub*0.07;
