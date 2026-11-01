@@ -153,6 +153,33 @@ input[type=range]{width:100%;accent-color:var(--orange)}
 .tag{font-size:.72rem;background:#eef2f6;padding:3px 8px;border-radius:6px;font-weight:600;color:#3c4a5a}
 .brand-card .link{margin-top:auto;font-weight:700;color:var(--orange);font-size:.88rem;padding-top:6px;text-align:left}
 
+/* Systems index */
+.sys-jump{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.sys-jump a{background:#fff;border:1px solid var(--line);padding:6px 12px;border-radius:999px;font-size:.85rem;font-weight:700}
+.sys-jump a:hover{border-color:var(--orange);color:var(--orange-d)}
+.sys-jump a i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;font-style:normal}
+#sysTable td a{color:var(--orange-d);font-weight:700}
+.sys{background:#fff;border:1px solid var(--line);border-radius:var(--radius);margin-bottom:18px;overflow:hidden;scroll-margin-top:90px}
+.sys-head{display:flex;gap:16px;align-items:flex-start;padding:20px 22px;border-left:6px solid var(--orange);flex-wrap:wrap}
+.sys-head .meta{flex:1;min-width:240px}
+.sys-head h3{font-size:1.25rem;margin-bottom:4px}
+.sys-head p{color:#3c4a5a;font-size:.92rem;margin:6px 0 10px}
+.sys-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 18px;font-size:.84rem;min-width:260px}
+.sys-facts span{color:var(--muted)}
+.sys-body{border-top:1px solid var(--line);padding:6px 22px 18px}
+.sys-group h5{font-size:.76rem;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin:14px 0 6px}
+.sys-row{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px dashed var(--line);font-size:.9rem}
+.sys-row:last-child{border-bottom:none}
+.sys-row svg{width:40px;height:34px;flex:none}
+.sys-row .nm{flex:1;min-width:0;cursor:pointer}
+.sys-row .nm:hover{color:var(--orange-d)}
+.sys-row .nm small{display:block;color:var(--muted);font-size:.76rem}
+.sys-row .pr{font-weight:800;white-space:nowrap}
+.sys-tips{background:#fff7f1;border-radius:8px;padding:10px 14px;font-size:.86rem;margin-top:14px;color:#5a3b22}
+.sys details{border:none;padding:0;margin:0;background:none}
+.sys summary{padding:12px 22px;border-top:1px solid var(--line);color:var(--orange-d);font-size:.9rem}
+@media (max-width:560px){.sys-facts{grid-template-columns:1fr;min-width:0}.sys-head,.sys-body{padding-left:16px;padding-right:16px}.sys summary{padding:12px 16px}}
+
 /* Connector guide table */
 .table-wrap{overflow-x:auto;background:#fff;border:1px solid var(--line);border-radius:var(--radius)}
 table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:720px}
@@ -287,6 +314,7 @@ footer a:hover{color:#fff}
     <ul id="navlinks">
       <li><a href="#shop">Shop</a></li>
       <li><a href="#finder">Camera Finder</a></li>
+      <li><a href="#systems">Systems Index</a></li>
       <li><a href="#brands">Brands</a></li>
       <li><a href="#wiring">Wiring Guide</a></li>
       <li><a href="#support">Support</a></li>
@@ -395,6 +423,7 @@ footer a:hover{color:#fff}
         <h3>Filters <button id="clearFilters">Clear all</button></h3>
         <div class="fgroup"><label>Category</label><div id="fCat"></div></div>
         <div class="fgroup"><label>Connection</label><div id="fConn"></div></div>
+        <div class="fgroup"><label>System</label><select id="fSys"><option value="">All systems</option></select></div>
         <div class="fgroup"><label>Brand</label><select id="fBrand"><option value="">All brands</option></select></div>
         <div class="fgroup"><label>Fits Rig Type</label><select id="fRig"><option value="">Any rig</option></select></div>
         <div class="fgroup"><label>Max Price</label><input type="range" id="fPrice" min="10" max="900" step="10" value="900"><div class="range-val">Up to <b id="fPriceVal">$900</b></div></div>
@@ -418,14 +447,23 @@ footer a:hover{color:#fff}
   </div>
 </section>
 
-<section id="brands">
+<section id="systems">
+  <div class="wrap">
+    <div class="sec-head"><div><h2>Systems Index</h2><p>Every camera system we carry, with each one's starter kits, add-on cameras, monitors, cables, mounts and parts in one place. Pick your system to see what's compatible with it.</p></div></div>
+    <div class="sys-jump" id="sysJump"></div>
+    <div class="sys-overview table-wrap" style="margin-bottom:28px"><table><thead><tr><th>System</th><th>Type</th><th>Connector</th><th>Max Cameras</th><th>Best For</th><th>Kits From</th><th>Parts</th></tr></thead><tbody id="sysTable"></tbody></table></div>
+    <div id="sysList"></div>
+  </div>
+</section>
+
+<section id="brands" style="background:#eef2f6">
   <div class="wrap">
     <div class="sec-head"><div><h2>Brands We Carry</h2><p>We stock the major RV camera makers plus our own <b>BW Pro</b> line of cables, mounts and install parts.</p></div></div>
     <div class="brands" id="brandGrid"></div>
   </div>
 </section>
 
-<section id="wiring" style="background:#eef2f6">
+<section id="wiring">
   <div class="wrap">
     <div class="sec-head"><div><h2>Connector &amp; Wiring Guide</h2><p>Using the wrong connector is the most common reason camera parts get returned. Check this chart before you order cables or adapters.</p></div></div>
     <div class="table-wrap">
@@ -438,7 +476,7 @@ footer a:hover{color:#fff}
   </div>
 </section>
 
-<section id="support">
+<section id="support" style="background:#eef2f6">
   <div class="wrap">
     <div class="sec-head"><div><h2>Support &amp; FAQ</h2><p>Answers from the team that installs these systems on our own rigs.</p></div></div>
     <div class="support">
@@ -707,6 +745,80 @@ const CONNECTORS = [
   {n:"SMA Antenna", where:"Back of wireless monitors and some wireless cameras", carries:"2.4 GHz wireless signal", brands:"Haloview, AMTIFO, Yakry", buy:"Wireless Signal Booster Antenna for long rigs"}
 ];
 
+/* =========================================================
+   DATABASE: SYSTEMS INDEX
+   Each system lists its own products (by brand / connection) plus the
+   BW Pro universal parts that work with it.
+   ========================================================= */
+const has = (...names) => p => names.some(n => p.name.includes(n));
+const COMMON = has("Lens Care","Grommet","Hardwire Kit");
+const FOURPIN = has("4-Pin Aviation Extension","4-Pin to RCA","4-Channel Camera DVR","Ground Loop","Marker Light Camera Mount","Universal Ladder","7-Way","Dash Monitor Suction");
+const WIRELESS_PARTS = has("Signal Booster","7-Way","Dash Monitor Suction","Universal Ladder","Marker Light Camera Mount");
+const SYSTEMS = [
+  {key:"furrion-vision-s", name:"Furrion Vision S", brand:"Furrion", type:"Wireless (prewire)", connector:"Furrion Vision S Prewire", max:4,
+   best:"Factory-prewired travel trailers, fifth wheels and toy haulers",
+   summary:"The system most new towables are prewired for. The rear camera clips into the factory \"shark fin\" bracket and gets 12V from the coach, and the video goes to the cab wirelessly. Side cameras replace your marker lights and use their wiring.",
+   tips:"Check the rear cap for the bracket before you buy. No bracket? Add the Vision S Mounting Bracket, and it uses the same cameras.",
+   match:p=>p.brand==="Furrion" || has("Prewire Harness")(p) || COMMON(p)},
+  {key:"voyager-wired", name:"Voyager Wired", brand:"Voyager", type:"Wired", connector:"Voyager proprietary", max:3,
+   best:"Class A and Class C motorhomes, larger fifth wheels",
+   summary:"Commercial-grade, hard-wired observation system. Lag-free video with shutter, heater and audio, the most durable setup we sell.",
+   tips:"Use genuine Voyager extension cables. 4-pin adapters carry video but won't run the shutter or heater.",
+   match:p=>(p.brand==="Voyager" && p.conn==="Wired") || COMMON(p)},
+  {key:"voyager-wireless", name:"Voyager Wireless", brand:"Voyager", type:"Wireless", connector:"12V power at camera", max:2,
+   best:"Owners who want Voyager durability without running a cable",
+   summary:"Voyager's weather-sealed camera on a digital wireless link. The camera only needs 12V power at the rear of the rig.",
+   tips:"Running-light power keeps the camera on while you drive. Reverse-light power turns it on only when you back up.",
+   match:p=>(p.brand==="Voyager" && p.conn==="Wireless") || has("7-Way","Universal Ladder","Dash Monitor Suction")(p) || COMMON(p)},
+  {key:"garmin-bc50", name:"Garmin BC 50 + RV Navigators", brand:"Garmin", type:"Wireless", connector:"12V power at camera", max:4,
+   best:"RVers who want GPS and backup camera on one screen",
+   summary:"BC 50 wireless cameras send video straight to Garmin RV GPS navigators, so you have one screen on the dash for routing and backing up.",
+   tips:"The BC 50 range is about 45 ft. Mount the camera high and centered on long rigs.",
+   match:p=>p.brand==="Garmin" || has("7-Way","Universal Ladder")(p) || COMMON(p)},
+  {key:"haloview", name:"Haloview Digital Wireless", brand:"Haloview", type:"Wireless", connector:"12V power at camera", max:4,
+   best:"Full-timers who want quad view and recording",
+   summary:"An expandable digital wireless platform. Start with one camera and grow to four, with split and quad views and optional SD recording.",
+   tips:"On rigs over 35 ft, add the Signal Booster Antenna to the monitor.",
+   match:p=>p.brand==="Haloview" || WIRELESS_PARTS(p) || COMMON(p)},
+  {key:"rvs-4pin", name:"Rear View Safety 4-Pin", brand:"Rear View Safety", type:"Wired", connector:"4-pin aviation", max:4,
+   best:"Long rigs and fleets that want wired reliability on a budget",
+   summary:"A wired system that uses standard 4-pin aviation connectors, so cables, adapters and DVRs from the BW Pro line plug straight in.",
+   tips:"Measure the cable route, then add 15–20%. 66 ft covers most rigs up to about 40 ft.",
+   match:p=>p.brand==="Rear View Safety" || FOURPIN(p) || COMMON(p)},
+  {key:"echomaster", name:"Echomaster Commercial", brand:"Echomaster", type:"Wired", connector:"4-pin aviation", max:3,
+   best:"Motorhomes and upfitters wanting OEM-grade hardware",
+   summary:"Commercial-standard cameras and a dimmable monitor on the universal 4-pin connector.",
+   tips:"Pair it with the 4-Channel DVR to record every camera.",
+   match:p=>p.brand==="Echomaster" || FOURPIN(p) || COMMON(p)},
+  {key:"amtifo", name:"AMTIFO HD Wireless", brand:"AMTIFO", type:"Wireless", connector:"12V power at camera", max:2,
+   best:"Weekend campers on a budget",
+   summary:"Low-cost HD wireless backup kits that are easy to install yourself.",
+   tips:"For the clearest signal, keep the camera and monitor antennas both pointing up.",
+   match:p=>p.brand==="AMTIFO" || WIRELESS_PARTS(p) || COMMON(p)},
+  {key:"erapta", name:"eRapta 4-Pin Wired", brand:"eRapta", type:"Wired", connector:"4-pin aviation", max:2,
+   best:"First-time DIY installs and smaller rigs",
+   summary:"The lowest-cost wired kit we sell, with a 66 ft cable. It uses standard 4-pin connectors, so you can upgrade to better cameras later.",
+   tips:"Use grommets and lap sealant wherever the cable passes through the RV wall.",
+   match:p=>p.brand==="eRapta" || FOURPIN(p) || COMMON(p)},
+  {key:"yakry", name:"Yakry Dual Wireless", brand:"Yakry", type:"Wireless", connector:"12V power at camera", max:2,
+   best:"Trailers that need a rear view plus a hitch view",
+   summary:"A two-camera wireless kit with a split-screen monitor. Common setups are rear plus hitch, or a high view plus a low view.",
+   tips:"Mount one camera high for traffic behind you and one low for the hitch and bumper.",
+   match:p=>p.brand==="Yakry" || WIRELESS_PARTS(p) || COMMON(p)},
+  {key:"autovox-solar", name:"Auto-Vox Solar", brand:"Auto-Vox", type:"Wireless (solar)", connector:"None, solar powered", max:1,
+   best:"Rentals, seasonal rigs, no-drill installs",
+   summary:"A camera that charges itself from its own solar panel, with no wiring at all. It mounts in minutes.",
+   tips:"Park facing the sun now and then. Long cloudy stretches can run the battery down.",
+   match:p=>p.brand==="Auto-Vox" || has("Universal Ladder","Dash Monitor Suction","Lens Care")(p)},
+  {key:"swift-hitch", name:"Swift Hitch Magnetic", brand:"Swift Hitch", type:"Wireless (battery)", connector:"None, rechargeable", max:1,
+   best:"Hitching up, and moving one camera wherever it's needed",
+   summary:"A portable, magnetic, rechargeable camera. Put it on the hitch to line up, then move it to the rear bumper to back up.",
+   tips:"Fiberglass caps aren't magnetic. Use a steel bumper, the hitch, or an adhesive steel plate.",
+   match:p=>p.brand==="Swift Hitch" || has("Dash Monitor Suction","Lens Care")(p)}
+];
+SYSTEMS.forEach(s=>s.items=PRODUCTS.filter(s.match));
+const GROUPS = [["Camera System","Starter Kits"],["Camera","Add-On Cameras"],["Monitor","Monitors & Displays"],["Cable","Cables & Wiring"],["Mount","Mounts"],["Power & Parts","Power & Parts"]];
+
 const FAQ = [
   ["How do I know if my RV is prewired for a camera?","Check the rear cap, usually top center above the rear window or license plate. A small plastic \"shark fin\" bracket or cover plate usually means it's Furrion Vision S prewired. Many prewired rigs also have a sticker inside a front cabinet. Send us a photo if you're not sure."],
   ["Wired or wireless: which is better?","Wired systems have a perfect, lag-free picture and never drop signal, but you have to run a cable the length of the rig. Wireless is much easier to install, and today's digital systems are very reliable up to about 40 ft. On bigger rigs, add a signal booster antenna."],
@@ -749,7 +861,7 @@ const store = {
 /* =========================================================
    STATE
    ========================================================= */
-const state = {q:"", cats:new Set(), conns:new Set(), brand:"", rig:"", max:900, night:false, sort:"featured", compare:[]};
+const state = {q:"", sys:"", cats:new Set(), conns:new Set(), brand:"", rig:"", max:900, night:false, sort:"featured", compare:[]};
 let cart = store.get("bwcams_cart", []);
 
 /* =========================================================
@@ -774,7 +886,39 @@ $("#brandGrid").innerHTML = BRANDS.map(b=>{
 
 $("#connTable").innerHTML = CONNECTORS.map(c=>`<tr><td><b>${c.n}</b></td><td>${c.where}</td><td>${c.carries}</td><td>${c.brands}</td><td>${c.buy}</td></tr>`).join("");
 
-$("#faq").innerHTML = FAQ.map(([q,a],i)=>`<details ${i===0?"open":""}><summary>${q}</summary><p>${a}</p></details>`).join("");
+/* Systems index render */
+$("#fSys").innerHTML += SYSTEMS.map(s=>`<option value="${s.key}">${s.name}</option>`).join("");
+$("#sysJump").innerHTML = SYSTEMS.map(s=>`<a href="#sys-${s.key}" data-sysopen="${s.key}"><i style="background:${brandColor(s.brand)}"></i>${s.name}</a>`).join("");
+$("#sysTable").innerHTML = SYSTEMS.map(s=>{
+  const kits = s.items.filter(p=>p.cat==="Camera System");
+  const from = kits.length ? money(Math.min(...kits.map(p=>p.price))) : "—";
+  return `<tr><td><a href="#sys-${s.key}" data-sysopen="${s.key}">${s.name}</a></td><td>${s.type}</td><td>${s.connector}</td><td>${s.max}</td><td>${s.best}</td><td><b>${from}</b></td><td>${s.items.length}</td></tr>`;
+}).join("");
+$("#sysList").innerHTML = SYSTEMS.map(s=>{
+  const groups = GROUPS.map(([cat,label])=>{
+    const items = s.items.filter(p=>p.cat===cat).sort((a,b)=>(a.brand===s.brand?0:1)-(b.brand===s.brand?0:1)||a.price-b.price);
+    if(!items.length) return "";
+    return `<div class="sys-group"><h5>${label} (${items.length})</h5>${items.map(p=>`<div class="sys-row">${art(p.cat,brandColor(p.brand))}<div class="nm" data-open="${p.id}">${p.brand==="BW Pro"?"BW Pro ":""}${esc(p.name)}<small>${p.sku} · ${p.conn}${p.brand!==s.brand&&p.brand!=="BW Pro"?" · "+p.brand:""}</small></div><span class="pr">${money(p.price)}</span><button class="add" data-add="${p.id}">Add</button></div>`).join("")}</div>`;
+  }).join("");
+  return `<article class="sys" id="sys-${s.key}">
+    <div class="sys-head" style="border-left-color:${brandColor(s.brand)}">
+      <div class="meta"><span class="brand" style="font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--orange)">${s.brand}</span><h3>${s.name}</h3><p>${s.summary}</p>
+        <button class="link" data-syshop="${s.key}" style="font-weight:700;color:var(--orange-d);font-size:.88rem">Show in catalog →</button></div>
+      <div class="sys-facts"><div><span>Type</span><br><b>${s.type}</b></div><div><span>Connector</span><br><b>${s.connector}</b></div><div><span>Max cameras</span><br><b>${s.max}</b></div><div><span>Compatible products</span><br><b>${s.items.length}</b></div><div style="grid-column:1/-1"><span>Best for</span><br><b>${s.best}</b></div></div>
+    </div>
+    <details><summary>View all ${s.items.length} compatible products</summary>
+      <div class="sys-body">${groups}<div class="sys-tips">💡 <b>Install tip:</b> ${s.tips}</div></div>
+    </details>
+  </article>`;
+}).join("");
+document.addEventListener("click",e=>{
+  const o=e.target.closest("[data-sysopen]");
+  if(o){const d=document.querySelector(`#sys-${o.dataset.sysopen} details`);if(d)d.open=true;}
+  const sh=e.target.closest("[data-syshop]");
+  if(sh){resetFilters();state.sys=sh.dataset.syshop;syncFilterUI();renderGrid();$("#shop").scrollIntoView();}
+});
+
+$("#faq").innerHTML =FAQ.map(([q,a],i)=>`<details ${i===0?"open":""}><summary>${q}</summary><p>${a}</p></details>`).join("");
 
 /* =========================================================
    RENDER: catalog
@@ -785,6 +929,7 @@ function filtered(){
     if(state.cats.size && !state.cats.has(p.cat)) return false;
     if(state.conns.size && !state.conns.has(p.conn)) return false;
     if(state.brand && p.brand!==state.brand) return false;
+    if(state.sys && !SYSTEMS.find(s=>s.key===state.sys).items.includes(p)) return false;
     if(state.rig && !p.fits.includes(state.rig)) return false;
     if(p.price>state.max) return false;
     if(state.night && !p.night) return false;
@@ -819,10 +964,10 @@ function renderGrid(){
 function syncFilterUI(){
   document.querySelectorAll('[data-f="cat"]').forEach(i=>i.checked=state.cats.has(i.value));
   document.querySelectorAll('[data-f="conn"]').forEach(i=>i.checked=state.conns.has(i.value));
-  $("#fBrand").value=state.brand; $("#fRig").value=state.rig; $("#fPrice").value=state.max;
+  $("#fSys").value=state.sys; $("#fBrand").value=state.brand; $("#fRig").value=state.rig; $("#fPrice").value=state.max;
   $("#fPriceVal").textContent="$"+state.max; $("#fNight").checked=state.night; $("#q").value=state.q; $("#sort").value=state.sort;
 }
-function resetFilters(){state.q="";state.cats.clear();state.conns.clear();state.brand="";state.rig="";state.max=900;state.night=false;}
+function resetFilters(){state.q="";state.sys="";state.cats.clear();state.conns.clear();state.brand="";state.rig="";state.max=900;state.night=false;}
 
 /* Filter events */
 document.addEventListener("change", e=>{
@@ -831,6 +976,7 @@ document.addEventListener("change", e=>{
   if(t.dataset.f==="conn"){t.checked?state.conns.add(t.value):state.conns.delete(t.value);renderGrid();}
   if(t.dataset.cmp){toggleCompare(+t.dataset.cmp,t);}
 });
+$("#fSys").onchange=e=>{state.sys=e.target.value;renderGrid();};
 $("#fBrand").onchange=e=>{state.brand=e.target.value;renderGrid();};
 $("#fRig").onchange=e=>{state.rig=e.target.value;renderGrid();};
 $("#fPrice").oninput=e=>{state.max=+e.target.value;$("#fPriceVal").textContent="$"+state.max;renderGrid();};
